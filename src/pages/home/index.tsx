@@ -4,6 +4,7 @@ import { observer, inject } from 'mobx-react';
 
 import { ConfigStore } from 'src/stores/app';
 import { WeatherService } from 'src/services/weather';
+import { Grid,  Row, Col } from 'react-flexbox-grid';
 
 type WeatherWidgetProps = { lat: number, long: number };
 
@@ -36,23 +37,39 @@ export class WeatherWidget extends React.Component<WeatherWidgetProps> {
 @observer
 export class HomePage extends React.Component<{ config: ConfigStore }> {
 
-  @observable private counter = 0;
+  
 
   constructor(props: any) {
     super(props);
 
     const { config } = this.props;
-    this.counter = config.INITIAL_COUNTER;
+    
   }
 
   public render() {
-    const CHICAGO = { lat: 41.8781, long: -87.6298 };
+    
     
     return (
       <>
-        <h1>React Starter Kit</h1>
-        <p>Counter: {this.counter}</p>
-        <WeatherWidget lat={CHICAGO.lat} long={CHICAGO.long} />
+        <h1 className="title">Runway</h1>
+        <div>
+          <div className="bp3-input-group bp3-large">
+            <span className="bp3-icon bp3-icon-search"></span>
+            <input className="bp3-input" type="search" placeholder="Search input" dir="auto" />
+          </div>
+        </div>
+
+        <Grid fluid={true}>
+          <Row>
+            <Col xs={6} md={3}>
+              Hello, world!
+            </Col>
+            <Col xs={6} md={3}>
+              Bye!
+            </Col>
+          </Row>
+        </Grid>
+
       </>
     );
   }
