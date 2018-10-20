@@ -4,21 +4,10 @@ import { Card, Elevation, Button } from '@blueprintjs/core';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 
+import { Item } from 'src/models';
 import './style.css';
 
 const DUMMY = { "name": "Avalon inc.", "rating": 1.0, "distance": 7.0, "pricing": 2, "department": "Cleaning" };
-
-interface Item {
-  photoUrl: string;
-  name: string;
-  price: number; // TODO(Bowden): use decimal numbers not float!
-  unit: string;
-}
-
-interface ItemOrder {
-  item: Item;
-  quanity: number;
-}
 
 type ItemOrderCard = { model: Item };
 class ItemOrder extends React.Component<ItemOrderCard> {

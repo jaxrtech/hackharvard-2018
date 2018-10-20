@@ -8,6 +8,7 @@ import { startsWith } from 'lodash-es';
 import { BusinessCard } from 'src/component/business-card';
 import { Link } from 'react-router-dom';
 
+import { Business } from 'src/models';
 
 @observer
 export class SearchPage extends React.Component {

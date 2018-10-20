@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Icon, Card, Elevation } from '@blueprintjs/core';
 
+import { Business } from 'src/models';
+
 export type BusinessCardProps = { model: Business; };
 
 export class BusinessCard extends React.Component<BusinessCardProps> {
