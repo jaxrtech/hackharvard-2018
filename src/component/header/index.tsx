@@ -24,7 +24,7 @@ export class Header extends React.Component<HeaderProps> {
       <>
         <Navbar className="bp3-dark">
           <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading><Link to="/">React Starter Kit</Link></NavbarHeading>
+            <NavbarHeading><Link to="/">runway.co</Link></NavbarHeading>
             <NavbarDivider />
             {routes.map((route, index) => (
               (route.hidden)

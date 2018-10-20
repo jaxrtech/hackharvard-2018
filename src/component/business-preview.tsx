@@ -5,9 +5,17 @@ import { Grid,  Row, Col } from 'react-flexbox-grid';
 
 import { Business } from 'src/models';
 
-export type BusinessPreviewProps = { model: Business; };
+export type BusinessPreviewProps = {
+    model: Business;
+    onClick?: (model: Business) => void;
+  };
 
 export class BusinessPreview extends React.Component<BusinessPreviewProps> {
+    private handleClick = (e: React.MouseEvent) => {
+        const f = this.props.onClick;
+        if (f) { f(this.props.model); }
+    }
+
   public render() {
     const { name, distance, pricing, rating } = this.props.model;
 
