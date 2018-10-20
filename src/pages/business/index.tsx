@@ -23,7 +23,7 @@ class ItemOrder extends React.Component<ItemOrderCard> {
         <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
           <Row>
             <Col xs={1}>
-              <img className="itemOrderPicture" src={photoUrl} />            
+              <img width="64" height="64" className="itemOrderPicture" src={photoUrl} />            
             </Col>
 
             <Col xs={5}>
