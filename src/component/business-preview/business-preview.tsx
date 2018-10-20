@@ -41,12 +41,13 @@ export class BusinessPreview extends React.Component<BusinessPreviewProps> {
                 Business motto or description
             </Col>
             <Row around="md" end="xs">
-              <Col md={2}><img src={photoUrl} /></Col>
-              <Col md={2}><img src={photoUrl+1} /></Col>
-              <Col md={2}><img src={photoUrl+2} /></Col>
+              <Col md={2}><img width="96" height="96" src={photoUrl} /></Col>
+              <Col md={2}><img width="96" height="96" src={photoUrl+1} /></Col>
+              <Col md={2}><img width="96" height="96" src={photoUrl+2} /></Col>
               <Col md={2} style={{marginRight: '10px'}}><img src={photoUrl+3} /></Col>
             </Row>
-        </Row></Grid>
+          </Row>
+        </Grid>
       </Card>
     );
   }

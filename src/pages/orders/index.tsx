@@ -27,7 +27,7 @@ class ItemOrderCard extends React.Component<ItemOrderCardProps> {
 
     return (
       <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-        <img style={{ float: 'left' }} src={photoUrl} />
+        <img width="64" height="64" style={{ float: 'left' }} src={photoUrl} />
         <h5><a href="#">{name}</a></h5>
         <span>{quantity} {unit}s</span>
       </Card>
