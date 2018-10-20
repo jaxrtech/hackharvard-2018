@@ -1,12 +1,8 @@
-.businessName{
-    font-size: 23px;
+.businessCardName{
+    font-size: 25px; 
+    padding-left: 20px;
 }
-.businessPricing{
-    
+.businessCardStars{
+    float: right;
 }
-.businessDistance{
-    
-}
-.businessStars{
-    
-}
+

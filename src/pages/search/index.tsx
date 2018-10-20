@@ -2,17 +2,19 @@ import * as React from 'react';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
-import { BusinessCard } from 'src/component/business-card';
+import { BusinessPreview } from 'src/component/business-preview/business-preview';
 import { Link } from 'react-router-dom';
 
 import { Business } from 'src/models';
 import { RouterStore } from 'mobx-react-router';
 import { Spinner } from '@blueprintjs/core';
 import { SearchBar } from 'src/component/search-bar';
+import { SearchBarStore } from 'src/stores/app';
 
 @inject('router')
+@inject('search')
 @observer
-export class SearchPage extends React.Component<{ router: RouterStore }> {
+export class SearchPage extends React.Component<{ router: RouterStore, search: SearchBarStore }> {
 
   @observable private ready = false;
   @observable private loading = false;
@@ -44,7 +46,7 @@ export class SearchPage extends React.Component<{ router: RouterStore }> {
 
   public render() {
     const cards = this.results.map((x, i) =>
-      <BusinessCard key={i} model={x} onClick={this.handleSelect} />);
+      <BusinessPreview key={i} model={x} />);
 
     if (this.loading) {
       return <Spinner size={50} />;
@@ -52,7 +54,7 @@ export class SearchPage extends React.Component<{ router: RouterStore }> {
 
     return (
       <>
-        <SearchBar router={this.props.router} />
+        <SearchBar router={this.props.router} search={this.props.search} />
         {cards}
       </>
     );
