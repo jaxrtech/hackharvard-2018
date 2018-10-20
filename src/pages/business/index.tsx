@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { BusinessCard } from 'src/component/business-card';
-import { Card, Elevation, Button } from '@blueprintjs/core';
+import { Card, Elevation, Button, NumericInput } from '@blueprintjs/core';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
+import { Row, Col } from 'react-flexbox-grid';
 
 import { Item } from 'src/models';
 import './style.css';
@@ -16,13 +17,28 @@ class ItemOrder extends React.Component<ItemOrderCard> {
 
     const buster = Math.floor(1000 * Math.random());
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
-
+    
     return (
       <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-        <img style={{float: 'left'}} src={photoUrl} />
-        <h5><a href="#">{name}</a></h5>
-        <span>${price}/{unit}</span>
-        <Button icon="shopping-cart">Buy</Button>
+        <Row>
+          <Col xs={1}>
+            <img className="itemOrderPicture" src={photoUrl} />            
+          </Col>
+
+          <Col xs={6}>
+            <h5 className="itemOrderName"><a href="#">{name}</a></h5>
+          </Col>
+
+          <Col xs={5}>
+            <Row end="xs">
+              <span className="itemOrderPrice">${price}/{unit}</span>
+            </Row>
+            <Row end="xs" className="itemOrderBuy">
+              <NumericInput min={1} max={100} value={1}/>
+              <Button icon="shopping-cart">Buy</Button>
+            </Row>
+          </Col>
+        </Row>        
       </Card>
     );
   }
@@ -44,7 +60,7 @@ export class BusinessPage extends React.Component {
 
     return (
       <>
-        <h1>Avalon</h1>
+        
         <BusinessCard model={DUMMY} />
 
         <h2>Products</h2>
