@@ -5,6 +5,7 @@ import { HomePage } from './pages/home';
 import { RegisterPage } from './pages/register';
 import { SearchPage } from './pages/search';
 import { BusinessPage } from './pages/business';
+import { ShoppingCartPage } from './pages/shoppingCart';
 
 export const routes: RouteSpec[] = [
   {
@@ -33,6 +34,11 @@ export const routes: RouteSpec[] = [
     path: "/orders",
     text: "Orders",
     main: OrderPage
+  },
+  {
+    path: "/shoppingCart",
+    text: "Shopping Cart",
+    main: ShoppingCartPage
   },
   // {
   //   path: "/profiles",
