@@ -5,7 +5,7 @@ import { Card, Elevation, Icon } from '@blueprintjs/core';
 import * as Rating from 'react-rating';
 import { startsWith } from 'lodash-es';
 
-import { BusinessCard } from 'src/component/business-card';
+import { BusinessPreview } from 'src/component/business-preview';
 import { Link } from 'react-router-dom';
 
 import { Business } from 'src/models';
@@ -23,9 +23,7 @@ export class SearchPage extends React.Component {
 
   public render() {
     const cards = this.results.map((x, i) => 
-      <Link key={i} to="/business">
-        <BusinessCard model={x} />
-      </Link>);
+        <BusinessPreview key={i} model={x} />);
 
     return (
       <>
