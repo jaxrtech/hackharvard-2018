@@ -2,14 +2,18 @@ import * as React from 'react';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { RouterStore } from 'mobx-react-router';
+import { SearchBarStore } from 'src/stores/app';
 
-export type SearchBarProps = { onSearch?: (query: string) => void; router: RouterStore | null };
+export type SearchBarProps = {
+  onSearch?: (query: string) => void;
+  router: RouterStore | null;
+  search: SearchBarStore;
+};
 
 @inject('router')
+@inject('search')
 @observer
 export class SearchBar extends React.Component<SearchBarProps> {
-
-  @observable private search: string = "";
 
   public render() {
     return (
@@ -17,7 +21,7 @@ export class SearchBar extends React.Component<SearchBarProps> {
         <span className="bp3-icon bp3-icon-search"></span>
         <input
           className="bp3-input"
-          value={this.search}
+          value={this.props.search.query}
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
           type="search"
@@ -28,12 +32,12 @@ export class SearchBar extends React.Component<SearchBarProps> {
   }
 
   private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.search = e.target.value;
+    this.props.search.query = e.target.value;
   }
 
   private handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const f = this.props.onSearch || this.handleSearchDefault;
-    if (e.key === 'Enter') { f(this.search); }
+    if (e.key === 'Enter') { f(this.props.search.query); }
   }
 
   private handleSearchDefault = (query: string) => {

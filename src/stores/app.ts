@@ -11,3 +11,7 @@ export class ConfigStore {
     return;
   }
 }
+
+export class SearchBarStore {
+  @observable public query = "";
+}

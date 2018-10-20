@@ -11,7 +11,7 @@ import registerServiceWorker from './registerServiceWorker';
 import './index.css'; // import before custom styles
 import { App } from './App';
 import { routes } from './routes';
-import { ConfigStore } from './stores/app';
+import { ConfigStore, SearchBarStore } from './stores/app';
 
 const routingStore = new RouterStore();
 
@@ -19,14 +19,10 @@ const configStore = new ConfigStore({
   initialCounter: 42,
 });
 
-type Stores = {
-  router: RouterStore;
-  config: ConfigStore;
-};
-
-const stores: Stores = {
+const stores = {
   router: routingStore,
   config: configStore,
+  search: new SearchBarStore(),
 };
 
 const browserHistory = createBrowserHistory();
