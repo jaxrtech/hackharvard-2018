@@ -1,0 +1,21 @@
+
+.bp3-navbar {
+  background-color: beige;
+  background: #001529;
+  padding: 5px 50px;
+  height: 60px;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", "Helvetica",Arial,sans-serif;
+}
+
+/* Disable <Link /> underline on hover in navbar */
+.bp3-navbar a:hover {
+  text-decoration: none;
+}
+
+.bp3-navbar a {
+  color: #f5f8fa;
+}
+
+.bp3-navbar a:hover {
+  color: #cacaca;
+}

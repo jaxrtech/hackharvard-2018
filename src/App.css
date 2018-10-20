@@ -1,0 +1,56 @@
+
+html, body, main, #root {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  height: 100%;
+  background: #f0f2f5;
+}
+
+
+.app-layout-container {
+  flex: auto;
+  padding: 0px 50px;
+}
+
+.app-layout-content {
+  background: rgb(255, 255, 255);
+  padding: 24px;
+  min-height: 280px;
+}
+
+.app-breadcrumb {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", "Helvetica",Arial,sans-serif;
+  line-height: 1.5;
+  padding: 0;
+  list-style: none;
+  color: rgba(0,0,0,.45);
+  font-size: 14px;
+  margin: 16px 0px;
+}
+
+.app-breadcrumb-separator {
+  margin: 0 8px;
+  color: rgba(0,0,0,.45);
+}
+
+.app-breadcrumb > span:last-child {
+  color: rgba(0,0,0,.65);
+}
+
+.app-breadcrumb > span:last-child .app-breadcrumb-separator {
+  display: none;
+}
+
+.app-layout-footer {
+  flex: 0 0 auto;
+  background: #f0f2f5;
+  padding: 24px 50px;
+  color: rgba(0,0,0,.65);
+  font-size: 14px;
+  text-align: center;
+}
