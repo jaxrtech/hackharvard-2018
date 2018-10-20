@@ -17,7 +17,7 @@ export interface Item {
 
 export interface ItemOrder {
   item: Item;
-  quanity: number;
+  quantity: number;
 }
 
 export interface Order {

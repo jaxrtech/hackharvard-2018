@@ -52,8 +52,8 @@ export class SearchPage extends React.Component<{ router: RouterStore }> {
 
     return (
       <>
-      <SearchBar router={this.props.router} />
-      {cards}
+        <SearchBar router={this.props.router} />
+        {cards}
       </>
     );
   }

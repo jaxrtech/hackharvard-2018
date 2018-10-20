@@ -1,3 +1,4 @@
+import { OrderPage } from './pages/orders/index';
 import { RouteSpec } from './util/routing';
 
 import { HomePage } from './pages/home';
@@ -27,7 +28,12 @@ export const routes: RouteSpec[] = [
     path: "/business",
     text: "Business",
     main: BusinessPage,
-  }
+  },
+  {
+    path: "/orders",
+    text: "Orders",
+    main: OrderPage
+  },
   // {
   //   path: "/profiles",
   //   text: "Profiles",

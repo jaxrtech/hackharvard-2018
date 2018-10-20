@@ -1,0 +1,10 @@
+
+.rw-orders-panel {
+  /* border-right: 1px solid rgb(165, 165, 165); */
+}
+
+.rw-orders-card {
+  border-radius: 0px;
+  /* box-shadow: none; */
+  border-bottom: 1px solid #000;
+}
