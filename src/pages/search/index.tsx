@@ -44,7 +44,7 @@ export class SearchPage extends React.Component<{ router: RouterStore }> {
 
   public render() {
     const cards = this.results.map((x, i) =>
-      <BusinessPreview key={i} model={x} onClick={this.handleSelect} />);
+      <BusinessPreview key={i} model={x} />);
 
     if (this.loading) {
       return <Spinner size={50} />;
