@@ -9,6 +9,7 @@ import './style.css';
 const DUMMY = { "name": "Avalon inc.", "rating": 1.0, "distance": 7.0, "pricing": 2, "department": "Cleaning" };
 
 interface Item {
+  photoUrl: string;
   name: string;
   price: number; // TODO(Bowden): use decimal numbers not float!
   unit: string;
@@ -22,10 +23,14 @@ interface ItemOrder {
 type ItemOrderCard = { model: Item };
 class ItemOrder extends React.Component<ItemOrderCard> {
   public render() {
-    const { name, price, unit} = this.props.model;
+    const { name, price, unit } = this.props.model;
+
+    const buster = Math.floor(1000 * Math.random());
+    const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
 
     return (
       <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
+        <img style={{float: 'left'}} src={photoUrl} />
         <h5><a href="#">{name}</a></h5>
         <span>${price}/{unit}</span>
         <Button icon="shopping-cart">Buy</Button>
