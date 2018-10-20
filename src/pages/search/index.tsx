@@ -6,6 +6,7 @@ import * as Rating from 'react-rating';
 import { startsWith } from 'lodash-es';
 
 import { BusinessCard } from 'src/component/business-card';
+import { Link } from 'react-router-dom';
 
 
 @observer
@@ -20,7 +21,10 @@ export class SearchPage extends React.Component {
   }
 
   public render() {
-    const cards = this.results.map((x, i) => <BusinessCard key={i} model={x} />);
+    const cards = this.results.map((x, i) => 
+      <Link key={i} to="/business">
+        <BusinessCard model={x} />
+      </Link>);
 
     return (
       <>
