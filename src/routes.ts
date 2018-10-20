@@ -1,9 +1,11 @@
+import { OrderPage } from './pages/orders/index';
 import { RouteSpec } from './util/routing';
 
 import { HomePage } from './pages/home';
 import { RegisterPage } from './pages/register';
 import { SearchPage } from './pages/search';
 import { BusinessPage } from './pages/business';
+import { ShoppingCartPage } from './pages/shoppingCart';
 
 export const routes: RouteSpec[] = [
   {
@@ -27,7 +29,17 @@ export const routes: RouteSpec[] = [
     path: "/business",
     text: "Business",
     main: BusinessPage,
-  }
+  },
+  {
+    path: "/orders",
+    text: "Orders",
+    main: OrderPage
+  },
+  {
+    path: "/shoppingCart",
+    text: "Shopping Cart",
+    main: ShoppingCartPage
+  },
   // {
   //   path: "/profiles",
   //   text: "Profiles",

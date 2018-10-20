@@ -23,7 +23,7 @@ class ItemOrder extends React.Component<ItemOrderCard> {
         <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
           <Row>
             <Col xs={1}>
-              <img className="itemOrderPicture" src={photoUrl} />            
+              <img width="64" height="64" className="itemOrderPicture" src={photoUrl} />            
             </Col>
 
             <Col xs={5}>
@@ -63,13 +63,17 @@ export class BusinessPage extends React.Component {
     return (
       <>
         <h1>Avalon inc.</h1>
-        <Col xs={4}>
-          <BusinessCard model={DUMMY} />
-        </Col>
+        <Row>
+          <Col xs={4}>
+            <BusinessCard model={DUMMY} />
+          </Col>
+          
+          <Col xs={5}>
+            <img width={300} src="/img/business_1.jpg" />
+          </Col>
+        </Row>
         
-        <Col xs={4}>
-          <img src="../../../public/img/business_1.jpg"></img>
-        </Col>
+        
 
         <h2>Products</h2>
         {cards}
