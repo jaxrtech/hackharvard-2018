@@ -9,10 +9,12 @@ import { Business } from 'src/models';
 import { RouterStore } from 'mobx-react-router';
 import { Spinner } from '@blueprintjs/core';
 import { SearchBar } from 'src/component/search-bar';
+import { SearchBarStore } from 'src/stores/app';
 
 @inject('router')
+@inject('search')
 @observer
-export class SearchPage extends React.Component<{ router: RouterStore }> {
+export class SearchPage extends React.Component<{ router: RouterStore, search: SearchBarStore }> {
 
   @observable private ready = false;
   @observable private loading = false;
@@ -52,7 +54,7 @@ export class SearchPage extends React.Component<{ router: RouterStore }> {
 
     return (
       <>
-      <SearchBar router={this.props.router} />
+      <SearchBar router={this.props.router} search={this.props.search} />
       {cards}
       </>
     );
