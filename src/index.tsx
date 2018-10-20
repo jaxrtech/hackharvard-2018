@@ -19,7 +19,12 @@ const configStore = new ConfigStore({
   initialCounter: 42,
 });
 
-const stores = {
+type Stores = {
+  router: RouterStore;
+  config: ConfigStore;
+};
+
+const stores: Stores = {
   router: routingStore,
   config: configStore,
 };

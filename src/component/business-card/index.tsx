@@ -4,9 +4,17 @@ import { Icon, Card, Elevation } from '@blueprintjs/core';
 import { Business } from 'src/models';
 import "./style.css";
 
-export type BusinessCardProps = { model: Business; };
+export type BusinessCardProps = {
+  model: Business;
+  onClick?: (model: Business) => void;
+};
 
 export class BusinessCard extends React.Component<BusinessCardProps> {
+  private handleClick = (e: React.MouseEvent) => {
+    const f = this.props.onClick;
+    if (f) { f(this.props.model); }
+  }
+
   public render() {
     const { name, distance, pricing, rating } = this.props.model;
 
