@@ -11,8 +11,8 @@ export class BusinessCard extends React.Component<BusinessCardProps> {
     const { name, distance, pricing, rating } = this.props.model;
 
     const pricingDisplay = "$".repeat(pricing);
-    const fullStar = <Icon icon="star" />;
-    const emptyStar = <Icon icon="star-empty" />;
+    const fullStar = <Icon icon="star" iconSize={20} />;
+    const emptyStar = <Icon icon="star-empty" iconSize={20} />;
 
     const stars = [];
     let i = 0;
@@ -25,10 +25,10 @@ export class BusinessCard extends React.Component<BusinessCardProps> {
 
     return (
       <Card interactive={true} elevation={Elevation.TWO}>
-        <h5><a className="businessName" href="#">{name}</a></h5>
-        <span className="businessPricing">{pricingDisplay}</span>
-        <span className="businessDistance">{distance} mi</span>
-        <span className="businessStars">{stars}</span>
+        <h5><a className="businessCardName" href="#">{name}</a></h5>
+        <span className="businessCardStars">{stars}</span>
+        <span className="businessCardPricing">{pricingDisplay}</span>
+        <span className="businessCardDistance">{distance} mi</span>
       </Card>
     );
   }
