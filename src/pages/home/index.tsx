@@ -6,7 +6,7 @@ import { ConfigStore } from 'src/stores/app';
 import { WeatherService } from 'src/services/weather';
 import { Grid,  Row, Col } from 'react-flexbox-grid';
 
-import "./styles.css";
+import "./style.css";
 
 type WeatherWidgetProps = { lat: number, long: number };
 
