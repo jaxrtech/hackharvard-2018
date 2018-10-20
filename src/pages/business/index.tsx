@@ -19,27 +19,29 @@ class ItemOrder extends React.Component<ItemOrderCard> {
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
     
     return (
-      <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-        <Row>
-          <Col xs={1}>
-            <img className="itemOrderPicture" src={photoUrl} />            
-          </Col>
+      <Col xs={8}>
+        <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
+          <Row>
+            <Col xs={1}>
+              <img className="itemOrderPicture" src={photoUrl} />            
+            </Col>
 
-          <Col xs={6}>
-            <h5 className="itemOrderName"><a href="#">{name}</a></h5>
-          </Col>
+            <Col xs={5}>
+              <h5 className="itemOrderName"><a href="#">{name}</a></h5>
+            </Col>
 
-          <Col xs={5}>
-            <Row end="xs">
-              <span className="itemOrderPrice">${price}/{unit}</span>
-            </Row>
-            <Row end="xs" className="itemOrderBuy">
-              <NumericInput min={1} max={100} value={1}/>
-              <Button icon="shopping-cart">Buy</Button>
-            </Row>
-          </Col>
-        </Row>        
+            <Col xs={6}>
+              <Row end="xs">
+                <span className="itemOrderPrice">${price}/{unit}</span>
+              </Row>
+              <Row end="xs" className="itemOrderBuy">
+                <NumericInput min={1} max={100} value={1}/>
+                <Button icon="shopping-cart">Buy</Button>
+              </Row>
+            </Col>
+          </Row>      
       </Card>
+    </Col>
     );
   }
 }
@@ -60,8 +62,14 @@ export class BusinessPage extends React.Component {
 
     return (
       <>
+        <h1>Avalon inc.</h1>
+        <Col xs={4}>
+          <BusinessCard model={DUMMY} />
+        </Col>
         
-        <BusinessCard model={DUMMY} />
+        <Col xs={4}>
+          <img src="../../../public/img/business_1.jpg"></img>
+        </Col>
 
         <h2>Products</h2>
         {cards}
