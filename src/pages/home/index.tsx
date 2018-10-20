@@ -1,35 +1,30 @@
 import * as React from 'react';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
+import { RouterStore } from 'mobx-react-router';
+import { Grid,  Row, Col } from 'react-flexbox-grid';
 
 import { ConfigStore } from 'src/stores/app';
-import { WeatherService } from 'src/services/weather';
-import { Grid,  Row, Col } from 'react-flexbox-grid';
+import { SearchBar } from 'src/component/search-bar';
 
 import "./style.css";
 
+@inject('router')
 @inject('config')
 @observer
-export class HomePage extends React.Component<{ config: ConfigStore }> {
+export class HomePage extends React.Component<{ config: ConfigStore, router: RouterStore }> {
 
   constructor(props: any) {
     super(props);
 
     const { config } = this.props;
-    
   }
 
   public render() {
-    
     return (
       <>
         <h1 className="title">Runway</h1>
-        <div>
-          <div className="bp3-input-group bp3-large">
-            <span className="bp3-icon bp3-icon-search"></span>
-            <input className="bp3-input" type="search" placeholder="Search input" dir="auto" />
-          </div>
-        </div>
+        <SearchBar router={this.props.router} />
         
         <Grid fluid={true}>
           <Row around="xs" className="Row">
@@ -60,4 +55,6 @@ export class HomePage extends React.Component<{ config: ConfigStore }> {
       </>
     );
   }
+
+  
 }
