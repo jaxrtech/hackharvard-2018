@@ -1,50 +1,13 @@
 import * as React from 'react';
 import { BusinessCard } from 'src/component/business-card';
-import { Card, Elevation, Button, NumericInput } from '@blueprintjs/core';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { Row, Col } from 'react-flexbox-grid';
 
 import { Item } from 'src/models';
-import './style.css';
+import { ItemOrderComponent } from 'src/component/item';
 
 const DUMMY = { "name": "Avalon inc.", "rating": 1.0, "distance": 7.0, "pricing": 2, "department": "Cleaning" };
-
-type ItemOrderCard = { model: Item };
-class ItemOrder extends React.Component<ItemOrderCard> {
-  public render() {
-    const { name, price, unit } = this.props.model;
-
-    const buster = Math.floor(1000 * Math.random());
-    const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
-    
-    return (
-      <Col xs={8}>
-        <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-          <Row>
-            <Col xs={1}>
-              <img className="itemOrderPicture" src={photoUrl} />            
-            </Col>
-
-            <Col xs={5}>
-              <h5 className="itemOrderName"><a href="#">{name}</a></h5>
-            </Col>
-
-            <Col xs={6}>
-              <Row end="xs">
-                <span className="itemOrderPrice">${price}/{unit}</span>
-              </Row>
-              <Row end="xs" className="itemOrderBuy">
-                <NumericInput min={1} max={100} value={1}/>
-                <Button icon="shopping-cart">Buy</Button>
-              </Row>
-            </Col>
-          </Row>      
-      </Card>
-    </Col>
-    );
-  }
-}
 
 @observer
 export class BusinessPage extends React.Component {
@@ -58,7 +21,7 @@ export class BusinessPage extends React.Component {
   }
   
   public render() {
-    const cards = this.results.map((x, i) => <ItemOrder key={i} model={x} />);
+    const cards = this.results.map((x, i) => <ItemOrderComponent key={i} model={x} />);
 
     return (
       <>
@@ -72,9 +35,6 @@ export class BusinessPage extends React.Component {
             <img width={300} src="/img/business_1.jpg" />
           </Col>
         </Row>
-        
-        
-
         <h2>Products</h2>
         {cards}
       </>
