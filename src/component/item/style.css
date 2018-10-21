@@ -7,12 +7,14 @@
 }
 .itemOrderPrice{
   font-size: 20px;
+  padding-right: 16px;
 }
 .itemOrderName{
   font-size: 16px;
 }
 .itemOrderBuy{
   margin-top: 16px;
+  padding-right: 16px;  
 }
 /*
 .bp3-input-group{

@@ -48,12 +48,12 @@ export class ExperienceComponent extends React.Component<ExperienceProps> {
                     <h2 className="expName">{events[0].name}</h2>
                         <span className="expBy">By: {events[0].by}</span>
                         <Row>    
-                            <Col className="expInfo" xs={4}>
+                            <Col className="expInfo" xs={5}>
                                 <Row><span>When: {events[0].date}</span></Row>        
                                 <Row><span>Where: {events[0].address}</span></Row>        
                                 <Row><span>Contact: {events[0].contact}</span></Row>
                             </Col>
-                            <Col className="expButton" xs={4}>
+                            <Col className="expButton" xs={3}>
                                 <Row end="xs"><span>Spots Left: {events[0].spotsLeft}</span></Row>
                                 <Row end="xs"><button className="bp3-button" type="button">Register!</button></Row>
                             </Col>
@@ -69,12 +69,12 @@ export class ExperienceComponent extends React.Component<ExperienceProps> {
                         <h2 className="expName">{events[1].name}</h2>
                         <span className="expBy">By: {events[1].by}</span>
                         <Row>    
-                            <Col className="expInfo" xs={4}>
+                            <Col className="expInfo" xs={5}>
                                 <Row><span>When: {events[1].date}</span></Row>        
                                 <Row><span>Where: {events[1].address}</span></Row>        
                                 <Row><span>Contact: {events[1].contact}</span></Row>
                             </Col>
-                            <Col className="expButton" xs={4}>
+                            <Col className="expButton" xs={3}>
                                 <Row end="xs"><span>Spots Left: {events[1].spotsLeft}</span></Row>
                                 <Row end="xs"><button className="bp3-button" type="button">Register!</button></Row>
                             </Col>

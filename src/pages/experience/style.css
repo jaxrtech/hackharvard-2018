@@ -1,7 +1,7 @@
 .expImg{
     float: left;
-    width: 125px;
-    height: 150px;
+    width: 145px;
+    height: 170px;
 }
 
 .expButton{
@@ -10,6 +10,7 @@
 }
 
 .expInfo{
+    padding-top: 30px;
     padding-left: 20px;
 }
 .bp3-button{
