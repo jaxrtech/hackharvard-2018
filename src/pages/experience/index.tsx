@@ -88,6 +88,7 @@ export class ExperienceComponent extends React.Component<ExperienceProps> {
                         </Row>
                     </Card>
                 </Col>
+                <p hidden={true}>{ counter === 4? counter = 0 : counter}</p>
             </Row>
         </>
         );
