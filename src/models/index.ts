@@ -49,3 +49,28 @@ export interface Event {
   address: string;
   spotsLeft: string;
 }
+
+export interface BusinessSearchResult {
+  id: string;
+  business_id: string;
+  name: string;
+  neighborhood: string;
+  address: string;
+  city: string;
+  state: string;
+  postal_code: string;
+  latitude: number;
+  longitude: number;
+  stars: number;
+  review_count: number;
+  is_open: number;
+  attributes: { [key: string]: string };
+  categories: string;
+  hours: Hours | null;
+}
+
+export interface Hours {
+  Friday: string;
+  Saturday: string;
+  Sunday: string;
+}

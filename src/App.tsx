@@ -10,6 +10,7 @@ import { ChatStore } from './stores/app';
 import * as classNames from 'classnames';
 import { RouterStore } from 'mobx-react-router';
 import { when, autorun, IReactionDisposer } from 'mobx';
+import { ChatBotPanel } from './component/chatbot/chatbot';
 
 export type AppProps = {
   routes: RouteSpec[];
@@ -53,6 +54,7 @@ export class App extends React.Component<AppProps> {
         </div>
 
         <aside className={classNames(chatClassNames)}>
+          <ChatBotPanel />
         </aside>
       </main>
     );
