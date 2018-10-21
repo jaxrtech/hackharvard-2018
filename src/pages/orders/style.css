@@ -7,4 +7,9 @@
   border-radius: 0px;
   /* box-shadow: none; */
   border-bottom: 1px solid #000;
+  transition: background-color 200ms ease-in-out;
+}
+
+.rw-orders-business-active .bp3-card {
+  background-color: aliceblue;
 }

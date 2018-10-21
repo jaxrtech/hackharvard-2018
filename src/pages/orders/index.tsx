@@ -11,6 +11,7 @@ import { sampleSize, sample, range } from 'lodash-es';
 import './style.css';
 import { Route, RouteComponentProps, Switch, RouterProps } from 'react-router';
 import { RouterStore } from 'mobx-react-router';
+import { NavLink } from 'react-router-dom';
 
 function pickRandom<T>(arr: T[]) {
   return arr[Math.floor(arr.length * Math.random())];
@@ -158,9 +159,14 @@ export class OrderPage extends React.Component<{ router: RouterStore }> {
   public render() {
     const businesses = this.store.results.map(x => x.business).map((x, i) =>
       <Route key={i}>
-        <Card  className="rw-orders-card" onClick={(e) => this.handleSelectBusiness(x, i)}>
+        <NavLink
+          to={'/orders/' + i}
+          activeClassName="rw-orders-business-active"
+        >
+        <Card className="rw-orders-card">
           <h5>{x.name}</h5>
         </Card>
+        </NavLink>
       </Route>
     );
 
