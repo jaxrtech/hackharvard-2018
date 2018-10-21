@@ -19,7 +19,7 @@ function pickRandom<T>(arr: T[]) {
 type ItemOrderCardProps = { model: ItemOrder };
 class ItemOrderCard extends React.Component<ItemOrderCardProps> {
   public render() {
-    const { name, price, measurement } = this.props.model.item || { name: "WTF", price: 999.99, unit: "WTF" };
+    const { name, price, unitOfMeasurement } = this.props.model.item;
     const { quantity } = this.props.model;
 
     const buster = Math.floor(1000 * Math.random());
@@ -29,7 +29,7 @@ class ItemOrderCard extends React.Component<ItemOrderCardProps> {
       <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
         <img width="64" height="64" style={{ float: 'left' }} src={photoUrl} />
         <h5><a href="#">{name}</a></h5>
-        <span>{quantity} {measurement}s</span>
+        <span>{quantity} {unitOfMeasurement}s</span>
       </Card>
     );
   }
