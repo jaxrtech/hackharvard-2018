@@ -14,7 +14,7 @@ main {
 .app-layout-container {
   flex: auto;
   padding: 0px 50px;
-  /* transition: 0.5s; */
+  transition: 0.5s;
 }
 
 .app-chat-hide {
@@ -22,7 +22,7 @@ main {
 
 .app-chat-show {
   margin-right: 320px; /* chat sidebar */
-  /* transition: 0.5s; */
+  transition: 0.5s; /* transition sliding */
 }
 
 .app-layout-content {
@@ -72,6 +72,7 @@ main {
     right: 0;
     overflow-x: hidden;
     padding-top: 20px;
+    transition: 0.5s; /* transition sliding */
     background-color: #97accc;
 }
 
