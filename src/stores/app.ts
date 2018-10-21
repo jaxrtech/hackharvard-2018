@@ -15,3 +15,11 @@ export class ConfigStore {
 export class SearchBarStore {
   @observable public query = "";
 }
+
+export class ChatStore {
+  @observable public hidden = false;
+
+  public toggle() {
+    this.hidden = !this.hidden;
+  }
+}

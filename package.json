@@ -5,6 +5,7 @@
   "dependencies": {
     "@aspnet/signalr": "^1.0.4",
     "@blueprintjs/core": "^3.7.0",
+    "classnames": "^2.2.6",
     "lodash-es": "^4.17.11",
     "mobx": "^5.5.0",
     "mobx-react": "^5.3.1",
@@ -24,6 +25,7 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.6",
     "@types/history": "^4.7.1",
     "@types/jest": "^23.3.5",
     "@types/lodash-es": "^4.17.1",
