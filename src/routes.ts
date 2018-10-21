@@ -6,6 +6,7 @@ import { RegisterPage } from './pages/register';
 import { SearchPage } from './pages/search';
 import { BusinessPage } from './pages/business';
 import { ShoppingCartPage } from './pages/shoppingCart';
+import { ExperiencePage} from './pages/experience';
 
 export const routes: RouteSpec[] = [
   {
@@ -39,6 +40,11 @@ export const routes: RouteSpec[] = [
     path: "/shoppingCart",
     text: "Shopping Cart",
     main: ShoppingCartPage
+  },
+  {
+    path: "/experience",
+    text: "Experience",
+    main: ExperiencePage
   },
   // {
   //   path: "/profiles",

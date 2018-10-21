@@ -1,36 +1,29 @@
 [
     {
-        "eventType":"Arts and Crafts",
-        "eventDetails":[
-            {
-                "name": "Bob Ross Painting Night",
-                "by": "Blick",
-                "Date": "Monday Oct 28, 2018",
-                "Contact": "(617) 441 6360",
-                "Address": "619 Massachusetts Ave",
-                "Spots Left": "13/50"
-            },
-            {
-                "name": "Couples Pottery Class",
-                "by": "JJ Pottery Store",
-                "Date": "Tuesday Nov 3, 2018",
-                "Contact": "(627) 373 2833",
-                "Address": "17 Jefferson St",
-                "Spots Left": "22/40"
-            }
-        ]
+        "eventType": "Arts and Crafts",
+        "name": "Bob Ross Painting Night",
+        "by": "Blick",
+        "date": "Monday Oct 28, 2018",
+        "contact": "(617) 441 6360",
+        "address": "619 Massachusetts Ave",
+        "spotsLeft": "13/50"
+    },
+    {
+        "eventType": "Arts and Crafts",
+        "name": "Couples Pottery Class",
+        "by": "JJ Pottery Store",
+        "date": "Tuesday Nov 3, 2018",
+        "contact": "(627) 373 2833",
+        "address": "17 Jefferson St",
+        "spotsLeft": "22/40"
     },
     {
         "eventType":"Outdoors",
-        "eventDetails":[
-            {
-                "name": "How to maintain and take care of a garden?",
-                "by": "Charles Gardening Equipment",
-                "Date": "Tuesday Oct 29, 2018",
-                "Contact": "(627) 386 0027",
-                "Address": "57 John Adams street",
-                "Spots Left": "8/20"
-            }
-        ]        
+        "name": "How to maintain and take care of a garden?",
+        "by": "Charles Gardening Equipment",
+        "date": "Tuesday Oct 29, 2018",
+        "contact": "(627) 386 0027",
+        "address": "57 John Adams street",
+        "spotsLeft": "8/20"     
     }
 ]
