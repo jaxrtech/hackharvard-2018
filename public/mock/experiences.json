@@ -21,15 +21,15 @@
         ]
     },
     {
-        "eventType":"Sports",
+        "eventType":"Outdoors",
         "eventDetails":[
             {
-                "name": "",
-                "by": "",
-                "Date": "",
-                "Contact": "",
-                "Address": "",
-                "Spots Left": ""
+                "name": "How to maintain and take care of a garden?",
+                "by": "Charles Gardening Equipment",
+                "Date": "Tuesday Oct 29, 2018",
+                "Contact": "(627) 386 0027",
+                "Address": "57 John Adams street",
+                "Spots Left": "8/20"
             }
         ]        
     }
