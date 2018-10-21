@@ -1,5 +1,11 @@
+.title{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
 
-
-.Row{
-    color: blue;
+.bubbleRow {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
