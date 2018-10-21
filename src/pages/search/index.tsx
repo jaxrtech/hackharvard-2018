@@ -53,6 +53,7 @@ export class SearchPage extends React.Component<{ router: RouterStore, search: S
 
     return (
       <>
+        <div style={{margin: '10px'}}/>
         <SearchBar router={this.props.router} search={this.props.search} />
         {cards}
       </>
