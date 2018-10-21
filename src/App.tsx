@@ -5,17 +5,30 @@ import { flatMap } from 'lodash-es';
 import { Header } from './component/header';
 import { RouteSpec } from './util/routing';
 import './App.css';
+import { observer, inject } from 'mobx-react';
+import { ChatStore } from './stores/app';
+import * as classNames from 'classnames';
 
-export type AppRoutes = { routes: RouteSpec[]; };
+export type AppProps = {
+  routes: RouteSpec[];
+  chat: ChatStore;
+};
 
-export class App extends React.Component<AppRoutes> {
+@inject('chat')
+@observer
+export class App extends React.Component<AppProps> {
   public render() {
     const { routes } = this.props;
+    const isChatHidden = this.props.chat.hidden;
+
+    const appClassNames = ["app-layout-container", (isChatHidden) ? "app-chat-hide" : "app-chat-show"];
+    const chatClassNames = ["rw-chat-panel", (isChatHidden) ? "rw-chat-panel-hide" : "rw-chat-panel-show"];
+
     return (
       <main>
-        <Header routes={routes} />
-
-        <div className="app-layout-container">
+        <Header routes={routes} chat={this.props.chat} />
+        
+        <div className={classNames(appClassNames)}>
           <div className="app-layout-content">
             <Switch>
               {renderRoutes(routes)}
@@ -23,6 +36,8 @@ export class App extends React.Component<AppRoutes> {
           </div>
         </div>
 
+        <aside className={classNames(chatClassNames)}>
+        </aside>
       </main>
     );
   }

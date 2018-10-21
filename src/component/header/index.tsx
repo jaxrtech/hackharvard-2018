@@ -5,6 +5,8 @@ import { matchRoute, RouteActive, RoutePath, RouteText, RouteExact, RouteSpec, R
 
 import './index.css';
 import { Navbar, NavbarGroup, Alignment, NavbarHeading, NavbarDivider, Button, Classes } from '@blueprintjs/core';
+import { inject } from 'mobx-react';
+import { ChatStore } from 'src/stores/app';
 
 type NavbarLinkProps = RouteActive & RoutePath & RouteText & RouteIcon;
 const NavbarLink = ({ active, path, text, icon }: NavbarLinkProps) => {
@@ -15,7 +17,9 @@ const NavbarLink = ({ active, path, text, icon }: NavbarLinkProps) => {
   );
 };
 
-type HeaderProps = { routes: RouteSpec[]; };
+type HeaderProps = { routes: RouteSpec[]; chat: ChatStore };
+
+@inject('chat')
 export class Header extends React.Component<HeaderProps> {
   public render() {
     const { routes } = this.props;
@@ -41,6 +45,7 @@ export class Header extends React.Component<HeaderProps> {
             <Button className={Classes.MINIMAL} icon="user" />
             <Button className={Classes.MINIMAL} icon="notifications" />
             <Button className={Classes.MINIMAL} icon="cog" />
+            <Button className={Classes.MINIMAL} icon="chat" onClick={() => this.props.chat.toggle()} />
           </NavbarGroup>
         </Navbar>
       </>
