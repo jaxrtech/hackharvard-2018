@@ -30,17 +30,13 @@ export class ShoppingCartStore {
 
   public get(order: ItemOrder) {
     const found = this.orders.find(x =>
-      x.item.name === order.item.name
-      && x.business.name === order.business.name);
-
+      x.item.id === order.item.id);
     return found;
   }
 
   public addOrUpdate(newOrder: ItemOrder) {
-    // TODO(Bowden): replace with actually UUIDs
     const oldOrderIndex = this.orders.findIndex(x =>
-      x.item.name === newOrder.item.name
-        && x.business.name === newOrder.business.name);
+      x.item.id === newOrder.item.id);
     
     if (oldOrderIndex < 0) {
       this.orders.push(newOrder);
@@ -52,7 +48,7 @@ export class ShoppingCartStore {
     // HACK(Bowden): This might update the business entity which might mess things up
     const order = Object.assign(oldOrder, newOrder);
     if (order.quantity === 0){
-      this.orders.splice(oldOrderIndex);
+      this.orders.splice(oldOrderIndex, 1);
       return null;
     }
 

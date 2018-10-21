@@ -27,7 +27,7 @@ export class BusinessPage extends React.Component<{ cart: ShoppingCartStore }> {
 
   public async componentDidMount() {
     const json = await fetch('/mock/items.json').then(x => x.json());
-    console.log('business', json);
+    console.log('business');
     this.results = json;
   }
   

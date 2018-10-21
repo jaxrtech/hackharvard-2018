@@ -11,21 +11,28 @@ import { ShoppingCartStore } from 'src/stores/app';
 
 type ItemOrderProps = { model: Item, cart: ShoppingCartStore };
 
-const DUMMY_BUSINESS = { "id": "40b35444-e419-40e4-9d2f-178dfaeec0b6", "name": "Skiles-Simonis", "rating": 2.0, "distance": 7.0, "pricing": 2, "department": "Kids" } as Business;
+const DUMMY_BUSINESS = {
+  "id": "40b35444-e419-40e4-9d2f-178dfaeec0b6",
+  "name": "Skiles-Simonis",
+  "rating": 2.0,
+  "distance": 7.0,
+  "pricing": 2,
+  "department": "Kids"
+} as Business;
 
 @inject('cart')
 @observer
 export class ItemOrderComponent extends React.Component<ItemOrderProps> {
 
   @observable private quantity = 0;
-  @observable private didBuy = false;
+  @observable private inCart = false;
 
   @computed private get action() {
-    if (!this.didBuy) {
+    if (!this.inCart) {
       return { intent: Intent.SUCCESS, text: "Buy" };
     }
 
-    // didBuy === true &&
+    // inCart === true &&
     if (this.quantity > 0) {
       return { intent: Intent.PRIMARY, text: "Update" };
     } else {
@@ -37,7 +44,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
 
   public componentWillMount() {
     this.dispose = when(
-      () => this.didBuy && this.quantity >= 1,
+      () => this.inCart && this.quantity >= 1,
       () => this.handleAction(),
     );
   }
@@ -51,14 +58,14 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
   private handleAction = () => {
     const oldQuantity = this.quantity;
 
-    if (!this.didBuy) {
+    if (!this.inCart) {
       this.quantity = (oldQuantity <= 0) ? 1 : oldQuantity;
-      this.didBuy = true;
+      this.inCart = true;
     }
 
     const newOrder = this.props.cart.addOrUpdate({ item: this.props.model, quantity: this.quantity, business: DUMMY_BUSINESS });
     if (!newOrder) {
-      this.didBuy = false;
+      this.inCart = false;
       this.quantity = 0;
     }
 
@@ -72,29 +79,27 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
 
     return (
-      <Col xs={12}>
-        <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-          <Row>
-            <Col xs={1}>
-              <img className="itemOrderPicture" src={photoUrl} />
-            </Col>
+      <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
+        <Row>
+          <Col xs={1}>
+            <img className="itemOrderPicture" src={photoUrl} />
+          </Col>
 
-            <Col xs={5}>
-              <h5 className="itemOrderName">{name}</h5>
-            </Col>
+          <Col xs={5}>
+            <h5 className="itemOrderName">{name}</h5>
+          </Col>
 
-            <Col xs={6}>
-              <Row end="xs">
-                <span className="itemOrderPrice">${price}/{unitOfMeasurement}</span>
-              </Row>
-              <Row end="xs" className="itemOrderBuy">
-                <NumericInput min={0} max={100} value={0} onValueChange={x => this.quantity = x} />
-                <Button icon="shopping-cart" onClick={this.handleAction} intent={this.action.intent}>{this.action.text}</Button>
-              </Row>
-            </Col>
-          </Row>
-        </Card>
-      </Col>
+          <Col xs={6}>
+            <Row end="xs">
+              <span className="itemOrderPrice">${price}/{unitOfMeasurement}</span>
+            </Row>
+            <Row end="xs" className="itemOrderBuy">
+              <NumericInput min={0} max={100} value={0} onValueChange={x => this.quantity = x} />
+              <Button icon="shopping-cart" onClick={this.handleAction} intent={this.action.intent}>{this.action.text}</Button>
+            </Row>
+          </Col>
+        </Row>
+      </Card>
     );
   }
 }

@@ -38,7 +38,7 @@ export class BusinessCard extends React.Component<BusinessCardProps> {
         <Grid><Row middle="xs" between="xs">
           <Col md={5}>
             <Link to="/business">
-              <H3><a href="#">{name}</a></H3>
+              <H3>{name}</H3>
             </Link>
             <span>{pricingDisplay}</span>&nbsp;—&nbsp;
             <span>{distance}mi</span>&nbsp;—&nbsp;
