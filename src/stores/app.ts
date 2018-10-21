@@ -48,7 +48,7 @@ export class ShoppingCartStore {
     // HACK(Bowden): This might update the business entity which might mess things up
     const order = Object.assign(oldOrder, newOrder);
     if (order.quantity === 0){
-      this.orders.splice(oldOrderIndex);
+      this.orders.splice(oldOrderIndex, 1);
       return null;
     }
 
