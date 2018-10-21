@@ -8,7 +8,7 @@ import { Item } from 'src/models';
 import { ItemOrderComponent } from 'src/component/item';
 import { ShoppingCartStore } from 'src/stores/app';
 
-const DUMMY = { "name": "Avalon inc.", "rating": 1.0, "distance": 7.0, "pricing": 2, "department": "Cleaning" };
+const DUMMY = { "name": "Avalon Inc.", "rating": 1.0, "distance": 7.0, "pricing": 2, "department": "Cleaning" };
 
 @inject('cart')
 @observer
