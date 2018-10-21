@@ -10,7 +10,6 @@ import { SearchBar } from 'src/component/search-bar';
 import { Bubble } from 'src/component/bubble';
 
 import "./style.css";
-import { Link } from 'react-router-dom';
 
 export type HomePageProps = {
   config: ConfigStore;
@@ -32,6 +31,11 @@ export class HomePage extends React.Component<HomePageProps> {
     this.searches = json;
   }
 
+  private bubblesearch = (text: string) => {
+    // the most efficient of bubble searches B-)
+    this.props.search.query = text;
+  }
+
   constructor(props: any) {
     super(props);
 
@@ -42,9 +46,9 @@ export class HomePage extends React.Component<HomePageProps> {
     // this is kind of hacky because I can't be bothered to make this chunk arbitrary input right now.
     const rows = this.searches.map((x, i) =>
       <Row key={i} center="xs" middle="xs" around="xs">
-        <Bubble text={x[0]}/>
-        <Bubble text={x[1]}/>
-        <Bubble text={x[2]}/>
+        <Bubble text={x[0]} onClick={this.bubblesearch}/>
+        <Bubble text={x[1]} onClick={this.bubblesearch}/>
+        <Bubble text={x[2]} onClick={this.bubblesearch}/>
       </Row>
       );
 
