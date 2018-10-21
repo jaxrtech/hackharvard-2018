@@ -21,13 +21,16 @@ export class ShoppingCartPage extends React.Component<{ cart: ShoppingCartStore 
 
   public render() {
     const cards = this.results.map((x, i) =>
-      <ItemOrderComponent key={i} model={x} cart={this.props.cart} />);
+      <Col key={i} md={6}>
+        <ItemOrderComponent model={x} cart={this.props.cart} />
+      </Col>
+    );
 
     return (
       <>
         <h1>Shopping Cart</h1>
         
-        {cards}
+        <Row>{cards}</Row>
       </>
     );
 
