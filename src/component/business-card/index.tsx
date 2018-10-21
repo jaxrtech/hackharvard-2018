@@ -24,7 +24,7 @@ export class BusinessCard extends React.Component<BusinessCardProps> {
     const fullStar = <Icon icon="star" iconSize={20} />;
     const emptyStar = <Icon icon="star-empty" iconSize={20} />;
 
-    const stars = [];
+    const stars: any[] = [];
     let i = 0;
     for (; i < rating; i++) {
       stars.push(fullStar);
