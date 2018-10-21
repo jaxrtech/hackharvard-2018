@@ -30,17 +30,13 @@ export class ShoppingCartStore {
 
   public get(order: ItemOrder) {
     const found = this.orders.find(x =>
-      x.item.name === order.item.name
-      && x.business.name === order.business.name);
-
+      x.item.id === order.item.id);
     return found;
   }
 
   public addOrUpdate(newOrder: ItemOrder) {
-    // TODO(Bowden): replace with actually UUIDs
     const oldOrderIndex = this.orders.findIndex(x =>
-      x.item.name === newOrder.item.name
-        && x.business.name === newOrder.business.name);
+      x.item.id === newOrder.item.id);
     
     if (oldOrderIndex < 0) {
       this.orders.push(newOrder);
