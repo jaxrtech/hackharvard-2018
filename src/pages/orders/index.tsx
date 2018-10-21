@@ -29,9 +29,11 @@ class ItemOrderCard extends React.Component<ItemOrderCardProps> {
     return (
       <Col xs={12}>
         <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-          <Col xs={1}><img width="64" height="64" style={{ float: 'left' }} className="ordersImg" src={photoUrl} /></Col>
-          <Col xs={5}><h5><a href="#">{name}</a></h5></Col>
-          <Col xs={6}><span>{quantity} {unitOfMeasurement}s</span></Col>
+          <Row>
+          <Col xs={1}><img className="ordersImg" width="64" height="64" style={{ float: 'left' }} src={photoUrl} /></Col>
+          <Col xs={5}><h5 className="ordersName"><a href="#">{name}</a></h5></Col>
+          <Col xs={6}><Row end="xs"><span>{quantity} {unitOfMeasurement}s</span></Row></Col>
+          </Row>
         </Card>
       </Col>
     );

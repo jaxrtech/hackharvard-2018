@@ -75,14 +75,8 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
       <Col xs={12}>
         <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
           <Row>
-            <Col xs={1}>
-              <img className="itemOrderPicture" src={photoUrl} />
-            </Col>
-
-            <Col xs={5}>
-              <h5 className="itemOrderName">{name}</h5>
-            </Col>
-
+            <Col xs={1}><img className="itemOrderPicture" src={photoUrl} /></Col>
+            <Col xs={5}><h5 className="itemOrderName">{name}</h5></Col>
             <Col xs={6}>
               <Row end="xs">
                 <span className="itemOrderPrice">${price}/{unitOfMeasurement}</span>
