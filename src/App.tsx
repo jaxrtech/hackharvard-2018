@@ -17,32 +17,30 @@ export type AppProps = {
   router?: RouterStore;
 };
 
-@inject('chat')
 @inject('router')
-@observer
 export class App extends React.Component<AppProps> {
 
-  // private dispose: IReactionDisposer;
+  private dispose: IReactionDisposer;
 
-  // public componentDidMount() {
-  //   const router = this.props.router;
-  //   if (router) {
-  //     this.dispose = autorun(() => router.location);
-  //   }
-  // }
+  public componentDidMount() {
+    const router = this.props.router;
+    if (router) {
+      this.dispose = autorun(() => router.location);
+    }
+  }
 
-  // public componentWillUnmount() {
-  //   if(this.dispose) {
-  //     this.dispose();
-  //   }
-  // }
+  public componentWillUnmount() {
+    if(this.dispose) {
+      this.dispose();
+    }
+  }
 
   public render() {
     const { routes } = this.props;
-    // const isChatHidden = this.props.chat.hidden;
+    const isChatHidden = this.props.chat.hidden;
 
-    // const appClassNames = classNames(["app-layout-container", (isChatHidden) ? "app-chat-hide" : "app-chat-show"]);
-    // const chatClassNames = classNames(["rw-chat-panel", (isChatHidden) ? "rw-chat-panel-hide" : "rw-chat-panel-show"]);
+    const appClassNames = classNames(["app-layout-container", (isChatHidden) ? "app-chat-hide" : "app-chat-show"]);
+    const chatClassNames = classNames(["rw-chat-panel", (isChatHidden) ? "rw-chat-panel-hide" : "rw-chat-panel-show"]);
 
     return (
       <main>
