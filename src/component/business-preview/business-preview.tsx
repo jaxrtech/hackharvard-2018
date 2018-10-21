@@ -16,7 +16,7 @@ export class BusinessPreview extends React.Component<BusinessPreviewProps> {
     const fullStar = <Icon icon="star" />;
     const emptyStar = <Icon icon="star-empty" />;
 
-    const stars = [];
+    const stars: any[] = [];
     let i = 0;
     for (; i < rating; i++) {
       stars.push(fullStar);
