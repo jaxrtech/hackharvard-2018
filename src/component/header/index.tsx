@@ -5,7 +5,7 @@ import { matchRoute, RouteActive, RoutePath, RouteText, RouteExact, RouteSpec, R
 
 import './index.css';
 import { Navbar, NavbarGroup, Alignment, NavbarHeading, NavbarDivider, Button, Classes } from '@blueprintjs/core';
-import { inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { ChatStore } from 'src/stores/app';
 
 type NavbarLinkProps = RouteActive & RoutePath & RouteText & RouteIcon;
@@ -17,9 +17,13 @@ const NavbarLink = ({ active, path, text, icon }: NavbarLinkProps) => {
   );
 };
 
-type HeaderProps = { routes: RouteSpec[]; chat: ChatStore };
+type HeaderProps = {
+  routes: RouteSpec[];
+  chat: ChatStore
+};
 
 @inject('chat')
+@observer
 export class Header extends React.Component<HeaderProps> {
   public render() {
     const { routes } = this.props;
