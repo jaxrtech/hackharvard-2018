@@ -3,17 +3,21 @@ import { Business } from './index';
 
 
 export interface Business {
+  id: string;
   name: string;
   rating: number;
   distance: number;
   pricing: number;
+  imgurl?: string;
+  blurb?: string;
 }
 
 export interface Item {
+  id: string;
   photoUrl: string;
   name: string;
   price: number; // TODO(Bowden): use decimal numbers not float!
-  unit: string;
+  unitOfMeasurement: string;
 }
 
 export interface ItemOrder {

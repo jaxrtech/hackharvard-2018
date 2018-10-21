@@ -11,7 +11,7 @@ import { ShoppingCartStore } from 'src/stores/app';
 
 type ItemOrderProps = { model: Item, cart: ShoppingCartStore };
 
-const DUMMY_BUSINESS = { "name": "Skiles-Simonis", "rating": 2.0, "distance": 7.0, "pricing": 2, "department": "Kids" } as Business;
+const DUMMY_BUSINESS = { "id": "40b35444-e419-40e4-9d2f-178dfaeec0b6", "name": "Skiles-Simonis", "rating": 2.0, "distance": 7.0, "pricing": 2, "department": "Kids" } as Business;
 
 @inject('cart')
 @observer
@@ -66,7 +66,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
   }
 
   public render() {
-    const { name, price, unit } = this.props.model;
+    const { name, price, unitOfMeasurement } = this.props.model;
 
     const buster = Math.floor(1000 * Math.random());
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
@@ -85,7 +85,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
 
             <Col xs={6}>
               <Row end="xs">
-                <span className="itemOrderPrice">${price}/{unit}</span>
+                <span className="itemOrderPrice">${price}/{unitOfMeasurement}</span>
               </Row>
               <Row end="xs" className="itemOrderBuy">
                 <NumericInput min={0} max={100} value={0} onValueChange={x => this.quantity = x} />
