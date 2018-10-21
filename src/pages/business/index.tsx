@@ -10,8 +10,8 @@ import { ShoppingCartStore } from 'src/stores/app';
 
 const DUMMY = {
   "id": "627f4613-83f1-4cab-8387-d56311edb30f",
-  "name": "Avalon Inc.",
-  "rating": 1.0,
+  "name": "Avlon Inc.",
+  "rating": 4.0,
   "distance": 7.0,
   "pricing": 2,
   "department": "Cleaning",
