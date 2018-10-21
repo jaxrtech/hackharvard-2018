@@ -46,11 +46,14 @@ export class App extends React.Component<AppProps> {
       <main>
         <Header routes={routes} chat={this.props.chat} />
         
-        <div className="app-layout-content">
+        <div className={classNames(appClassNames)}>
           <Switch>
             {renderRoutes(routes)}
           </Switch>
         </div>
+
+        <aside className={classNames(chatClassNames)}>
+        </aside>
       </main>
     );
   }
