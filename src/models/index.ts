@@ -18,6 +18,7 @@ export interface Item {
 export interface ItemOrder {
   item: Item;
   quantity: number;
+  business: Business;
 }
 
 export interface Order {
