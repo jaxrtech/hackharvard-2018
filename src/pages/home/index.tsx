@@ -7,7 +7,7 @@ import { H1 } from '@blueprintjs/core';
 
 import { ConfigStore, SearchBarStore } from 'src/stores/app';
 import { SearchBar } from 'src/component/search-bar';
-import { Bubble } from 'src/component/bubble/bubble';
+import { Bubble } from 'src/component/bubble';
 
 import "./style.css";
 import { Link } from 'react-router-dom';
