@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 
 import { Item, Business } from 'src/models';
-import { Card, Elevation, Button, NumericInput, Intent } from '@blueprintjs/core';
+import { H5, Card, Elevation, Button, NumericInput, Intent } from '@blueprintjs/core';
 
 import "./style.css";
 import { observable, when, IReactionDisposer, computed } from 'mobx';
@@ -29,7 +29,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
 
   @computed private get action() {
     if (!this.inCart) {
-      return { intent: Intent.SUCCESS, text: "Buy" };
+      return { intent: Intent.SUCCESS, text: "Add" };
     }
 
     // inCart === true &&
@@ -79,23 +79,24 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
 
     return (
-      <Col xs={12}>
-        <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-          <Row>
-            <Col xs={1}><img className="itemOrderPicture" src={photoUrl} /></Col>
-            <Col xs={5}><h5 className="itemOrderName">{name}</h5></Col>
-            <Col xs={6}>
-              <Row end="xs">
-                <span className="itemOrderPrice">${price}/{unitOfMeasurement}</span>
-              </Row>
-              <Row end="xs" className="itemOrderBuy">
-                <NumericInput min={0} max={100} value={0} onValueChange={x => this.quantity = x} />
-                <Button icon="shopping-cart" onClick={this.handleAction} intent={this.action.intent}>{this.action.text}</Button>
-              </Row>
-            </Col>
-          </Row>
-        </Card>
-      </Col>
+      <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
+        <H5 className="itemOrderName">{name}</H5>
+        <Row between="xs" middle="xs">
+          <Col>
+            <img className="itemOrderPicture" src={photoUrl} />
+          </Col>
+
+          <Col>
+            <Row end="xs">
+              <span className="itemOrderPrice">${price}/{unitOfMeasurement}</span>
+            </Row>
+            <Row end="xs" className="itemOrderBuy">
+              <NumericInput style={{width:"30px"}} min={0} max={100} value={0} onValueChange={x => this.quantity = x} />
+              <Button icon="shopping-cart" onClick={this.handleAction} intent={this.action.intent}>{this.action.text}</Button>
+            </Row>
+          </Col>
+        </Row>
+      </Card>
     );
   }
 }
