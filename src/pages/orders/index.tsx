@@ -27,11 +27,15 @@ class ItemOrderCard extends React.Component<ItemOrderCardProps> {
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
 
     return (
-      <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-        <img width="64" height="64" style={{ float: 'left' }} src={photoUrl} />
-        <h5><a href="#">{name}</a></h5>
-        <span>{quantity} {unitOfMeasurement}s</span>
-      </Card>
+      <Col xs={12}>
+        <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
+          <Row>
+          <Col xs={1}><img className="ordersImg" width="64" height="64" style={{ float: 'left' }} src={photoUrl} /></Col>
+          <Col xs={5}><h5 className="ordersName"><a href="#">{name}</a></h5></Col>
+          <Col xs={6}><Row end="xs"><span>{quantity} {unitOfMeasurement}s</span></Row></Col>
+          </Row>
+        </Card>
+      </Col>
     );
   }
 }

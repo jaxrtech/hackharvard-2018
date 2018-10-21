@@ -38,6 +38,10 @@ export interface OrdersByBusiness {
 
 export interface Experience {
   eventType: string;
+  events: Event[];
+}
+
+export interface Event {
   name: string;
   by: string;
   date: string;
