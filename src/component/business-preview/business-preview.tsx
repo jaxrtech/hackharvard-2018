@@ -32,7 +32,8 @@ export class BusinessPreview extends React.Component<BusinessPreviewProps> {
     const rating = this.props.model.stars;
 
     const HARVARD = { lat: 42.3770, long: -71.1167 };
-    const miles = distance(latitude, longitude, HARVARD.lat, HARVARD.long, "M");
+    const milesQ = distance(latitude, longitude, HARVARD.lat, HARVARD.long, "M");
+    const miles = Math.floor(milesQ * 10) / 100;
 
     const pricing = 1 + Math.floor(2 * Math.random());
     const pricingDisplay = "$".repeat(pricing);

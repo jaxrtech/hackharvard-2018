@@ -62,14 +62,13 @@ main {
 }
 
 .rw-chat-panel {
-    height: 100%;
+    height: 98%;
     width: 320px;
     position: fixed;
     z-index: 1;
-    top: 60px;
+    top: 50px;
     right: 0;
     overflow-x: hidden;
-    padding-top: 20px;
     background-color: #97accc;
 }
 

@@ -54,7 +54,12 @@ export class App extends React.Component<AppProps> {
         </div>
 
         <aside className={classNames(chatClassNames)}>
-          <ChatBotPanel />
+          <iframe 
+            allow="microphone;"
+            width="100%"
+            height="95%"
+            src="https://console.dialogflow.com/api-client/demo/embedded/85346c45-c5c2-49b5-9daa-6ffa350f37b0">
+          </iframe>
         </aside>
       </main>
     );
