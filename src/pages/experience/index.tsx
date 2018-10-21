@@ -25,7 +25,6 @@ export class ExperiencePage extends React.Component {
         return (
             <>
                 <h1>Experiences</h1>
-                <h2>Things to do this Weekend!</h2>
                 <Grid>{cards}</Grid>
             </>
         );
@@ -38,34 +37,59 @@ export class ExperienceComponent extends React.Component<ExperienceProps> {
     public render() {
         const resizeMode = 'center';
         const { eventType, events } = this.props.model;
-        counter = counter + 1;
-        const styles = {
-            container: {
-                backgroundImage: "url(/img/exp"+counter+".png)",
-                flex:1,
-                backgroundColor: 'rgba(0,0,0,.6)'
-            }
-        };
+        
         return (
-            <Col xs={6}>
-                <Card style={styles.container} className="rw-experience-card" interactive={true} elevation={Elevation.ONE}>
-                    <h2>{events[0].name}</h2>
-                    <span className="expBy">By: {events[0].by}</span>
-                    <Row>    
-                        <Col xs={4}>
-                            <Row><span>Contact: {events[0].contact}</span></Row>
-                        </Col>
-                        <Col xs={4}>
-                            <Row><span>Date: {events[0].date}</span></Row>        
-                            <Row><span>Address: {events[0].address}</span></Row>
-                        </Col>
-                        <Col xs={4}>
-                            <Row><span>Spots Left: {events[0].spotsLeft}</span></Row>
-                            <Row><button className="bp3-button" type="button">Register!</button></Row>
-                        </Col>
-                    </Row>
-                </Card>
-            </Col>
+            <>
+            <h2>{eventType}</h2>
+            <Row>
+                <p hidden={true}>{counter = counter + 1}</p>
+                <Col xs={6}>
+                    <Card className="rw-experience-card" interactive={true} elevation={Elevation.ONE}>
+                        <h2 className="expName">{events[0].name}</h2>
+                        <span className="expBy">By: {events[0].by}</span>
+                        <Row>    
+                            <Col xs={3}>
+                                <Row><span>Contact: {events[0].contact}</span></Row>
+                            </Col>
+                            <Col xs={3}>
+                                <Row><span>Date: {events[0].date}</span></Row>        
+                                <Row><span>Address: {events[0].address}</span></Row>
+                            </Col>
+                            <Col xs={3}>
+                                <Row><span>Spots Left: {events[0].spotsLeft}</span></Row>
+                                <Row><button className="bp3-button" type="button">Register!</button></Row>
+                            </Col>
+                            <Col xs={3}>
+                                <Row><img className="expImg" src={"img/exp"+counter+".png"}/></Row>
+                            </Col>
+                        </Row>
+                    </Card>
+                </Col>
+                <p hidden={true}>{counter = counter + 1}</p>
+                <Col xs={6}>
+                    <Card className="rw-experience-card" interactive={true} elevation={Elevation.ONE}>
+                        <h2 className="expName">{events[1].name}</h2>
+                        <span className="expBy">By: {events[1].by}</span>
+                        <Row>    
+                            <Col xs={3}>
+                                <Row><span>Contact: {events[1].contact}</span></Row>
+                            </Col>
+                            <Col xs={3}>
+                                <Row><span>Date: {events[1].date}</span></Row>        
+                                <Row><span>Address: {events[1].address}</span></Row>
+                            </Col>
+                            <Col xs={3}>
+                                <Row><span>Spots Left: {events[1].spotsLeft}</span></Row>
+                                <Row><button className="bp3-button" type="button">Register!</button></Row>
+                            </Col>
+                            <Col xs={3}>
+                                <Row><img className="expImg" src={"img/exp"+counter+".png"}/></Row>
+                            </Col>
+                        </Row>
+                    </Card>
+                </Col>
+            </Row>
+        </>
         );
     }
 }

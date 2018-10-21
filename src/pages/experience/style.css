@@ -1,12 +1,16 @@
 .expImg{
-    opacity:0.6;
+    float: left;
+    width: 120px;
+    height: 150px;
 }
 
 .expBy{
     
 }
+.expName{
+    margin-bottom: 5px;
+}
 
 .rw-experience-card{
     margin-bottom: 10px;    
-
 }

@@ -7,7 +7,7 @@
                 "by": "Blick",
                 "date": "Monday Oct 28, 2018",
                 "contact": "(617) 441 6360",
-                "address": "619 Massachusetts Ave",
+                "address": "619 Massachusetts Ave.",
                 "spotsLeft": "13/50"
             },
             {
@@ -15,7 +15,7 @@
                 "by": "JJ Pottery Store",
                 "date": "Tuesday Nov 3, 2018",
                 "contact": "(627) 373 2833",
-                "address": "17 Jefferson St",
+                "address": "17 Jefferson St.",
                 "spotsLeft": "22/40"
             }
         ]
@@ -28,8 +28,16 @@
                 "by": "Charles Gardening Equipment",
                 "date": "Tuesday Oct 29, 2018",
                 "contact": "(627) 386 0027",
-                "address": "57 John Adams street",
+                "address": "57 John Adams St.",
                 "spotsLeft": "8/20"
+            },
+            {
+                "name": "Rock Climbing Experience",
+                "by": "Clif Bars",
+                "date": "Wednesday Mar 29, 2018",
+                "contact": "(411) 113 2456",
+                "address": "82 Hill Rd.",
+                "spotsLeft": "7/12"
             }
         ]        
     }
