@@ -25,14 +25,14 @@ const DUMMY_BUSINESS = {
 export class ItemOrderComponent extends React.Component<ItemOrderProps> {
 
   @observable private quantity = 0;
-  @observable private didBuy = false;
+  @observable private inCart = false;
 
   @computed private get action() {
-    if (!this.didBuy) {
+    if (!this.inCart) {
       return { intent: Intent.SUCCESS, text: "Buy" };
     }
 
-    // didBuy === true &&
+    // inCart === true &&
     if (this.quantity > 0) {
       return { intent: Intent.PRIMARY, text: "Update" };
     } else {
@@ -44,7 +44,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
 
   public componentWillMount() {
     this.dispose = when(
-      () => this.didBuy && this.quantity >= 1,
+      () => this.inCart && this.quantity >= 1,
       () => this.handleAction(),
     );
   }
@@ -58,14 +58,14 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
   private handleAction = () => {
     const oldQuantity = this.quantity;
 
-    if (!this.didBuy) {
+    if (!this.inCart) {
       this.quantity = (oldQuantity <= 0) ? 1 : oldQuantity;
-      this.didBuy = true;
+      this.inCart = true;
     }
 
     const newOrder = this.props.cart.addOrUpdate({ item: this.props.model, quantity: this.quantity, business: DUMMY_BUSINESS });
     if (!newOrder) {
-      this.didBuy = false;
+      this.inCart = false;
       this.quantity = 0;
     }
 
