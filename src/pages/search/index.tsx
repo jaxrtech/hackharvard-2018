@@ -3,7 +3,6 @@ import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
 import { BusinessPreview } from 'src/component/business-preview/business-preview';
-import { Link } from 'react-router-dom';
 
 import { Business } from 'src/models';
 import { RouterStore } from 'mobx-react-router';

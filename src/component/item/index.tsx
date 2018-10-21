@@ -14,22 +14,11 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
   
   private dispose: IReactionDisposer;
 
-  public componentWillMount() {
-    
-    this.dispose = when(
-        () => !this.isVisible,
-        // ... then
-        () => this.dispose()
-    );
-  }
-
   public render() {
     const { name, price, unit } = this.props.model;
 
     const buster = Math.floor(1000 * Math.random());
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
-    
-    
 
     return (
       <Col xs={8}>

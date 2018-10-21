@@ -11,10 +11,18 @@ main {
   background: #f0f2f5;
 }
 
-
 .app-layout-container {
   flex: auto;
   padding: 0px 50px;
+  transition: 0.5s;
+}
+
+.app-chat-hide {
+}
+
+.app-chat-show {
+  margin-right: 320px; /* chat sidebar */
+  transition: 0.5s; /* transition sliding */
 }
 
 .app-layout-content {
@@ -53,4 +61,24 @@ main {
   color: rgba(0,0,0,.65);
   font-size: 14px;
   text-align: center;
+}
+
+.rw-chat-panel {
+    height: 100%;
+    width: 320px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: 0.5s; /* transition sliding */
+    background-color: #97accc;
+}
+
+.rw-chat-panel-hide {
+  width: 0;
+}
+
+.rw-chat-panel-show {
 }
