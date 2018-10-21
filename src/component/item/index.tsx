@@ -72,7 +72,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
 
     return (
-      <Col xs={8}>
+      <Col xs={12}>
         <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
           <Row>
             <Col xs={1}>

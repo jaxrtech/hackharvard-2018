@@ -8,7 +8,15 @@ import { Item } from 'src/models';
 import { ItemOrderComponent } from 'src/component/item';
 import { ShoppingCartStore } from 'src/stores/app';
 
-const DUMMY = { "name": "Avalon inc.", "rating": 1.0, "distance": 7.0, "pricing": 2, "department": "Cleaning" };
+const DUMMY = {
+  "name": "Avalon Inc.",
+  "rating": 1.0,
+  "distance": 7.0,
+  "pricing": 2,
+  "department": "Cleaning",
+  "imgurl": "/img/business_1.jpg",
+  "blurb": "Avalon is super super super cool, but there's one teensy little problem.  We don't have potable water where we are, so all our food products are made with Simple Green instead of water.  We hope that's OK :)"
+};
 
 @inject('cart')
 @observer
@@ -27,16 +35,7 @@ export class BusinessPage extends React.Component<{ cart: ShoppingCartStore }> {
 
     return (
       <>
-        <h1>Avalon inc.</h1>
-        <Row>
-          <Col xs={4}>
-            <BusinessCard model={DUMMY} />
-          </Col>
-          
-          <Col xs={5}>
-            <img width={300} src="/img/business_1.jpg" />
-          </Col>
-        </Row>
+        <BusinessCard model={DUMMY} />
         <h2>Products</h2>
         {cards}
       </>

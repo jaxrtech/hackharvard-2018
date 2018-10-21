@@ -1,3 +1,4 @@
+import { ExperiencePage } from './../pages/experience/index';
 import { Business } from './index';
 
 
@@ -7,6 +8,8 @@ export interface Business {
   rating: number;
   distance: number;
   pricing: number;
+  imgurl?: string;
+  blurb?: string;
 }
 
 export interface Item {
@@ -31,4 +34,14 @@ export interface Order {
 export interface OrdersByBusiness {
   business: Business;
   orders: Order[];
+}
+
+export interface Experience {
+  eventType: string;
+  name: string;
+  by: string;
+  date: string;
+  contact: string;
+  address: string;
+  spotsLeft: string;
 }
