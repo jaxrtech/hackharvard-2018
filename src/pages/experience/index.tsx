@@ -5,6 +5,9 @@ import { observer } from 'mobx-react';
 import { Col, Row, Grid } from 'react-flexbox-grid';
 import { Card, Elevation } from '@blueprintjs/core';
 
+
+import './style.css';
+import { fill } from 'lodash-es';
 @observer
 export class ExperiencePage extends React.Component {
     @observable private results: Experience[] = []; 
@@ -28,35 +31,41 @@ export class ExperiencePage extends React.Component {
         );
     }
 }
-
+let counter = 0;
 type ExperienceProps = { model: Experience };
 @observer
 export class ExperienceComponent extends React.Component<ExperienceProps> {
     public render() {
-        const { eventType, name, by, date, contact, address, spotsLeft } = this.props.model;
+        const resizeMode = 'center';
+        const { eventType, events } = this.props.model;
+        counter = counter + 1;
+        const styles = {
+            container: {
+                backgroundImage: "url(/img/exp"+counter+".png)",
+                flex:1,
+                backgroundColor: 'rgba(0,0,0,.6)'
+            }
+        };
         return (
-          <Col xs={12}>
-            <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-              <Row>
-                <Col xs={1}>
-                  
-                </Col>
-    
-                <Col xs={5}>
-                  <h5 className="itemOrderName">{name}</h5>
-                </Col>
-    
-                <Col xs={6}>
-                  <Row end="xs">
-                    <span className="itemOrderPrice">${by}/{date}</span>
-                  </Row>
-                  <Row end="xs" className="itemOrderBuy">
-                    
-                  </Row>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
+            <Col xs={6}>
+                <Card style={styles.container} className="rw-experience-card" interactive={true} elevation={Elevation.ONE}>
+                    <h2>{events[0].name}</h2>
+                    <span className="expBy">By: {events[0].by}</span>
+                    <Row>    
+                        <Col xs={4}>
+                            <Row><span>Contact: {events[0].contact}</span></Row>
+                        </Col>
+                        <Col xs={4}>
+                            <Row><span>Date: {events[0].date}</span></Row>        
+                            <Row><span>Address: {events[0].address}</span></Row>
+                        </Col>
+                        <Col xs={4}>
+                            <Row><span>Spots Left: {events[0].spotsLeft}</span></Row>
+                            <Row><button className="bp3-button" type="button">Register!</button></Row>
+                        </Col>
+                    </Row>
+                </Card>
+            </Col>
         );
-      }
+    }
 }
