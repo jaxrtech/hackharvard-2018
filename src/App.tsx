@@ -8,36 +8,49 @@ import './App.css';
 import { observer, inject } from 'mobx-react';
 import { ChatStore } from './stores/app';
 import * as classNames from 'classnames';
+import { RouterStore } from 'mobx-react-router';
+import { when, autorun, IReactionDisposer } from 'mobx';
 
 export type AppProps = {
   routes: RouteSpec[];
   chat: ChatStore;
+  router?: RouterStore;
 };
 
-@inject('chat')
-@observer
+@inject('router')
 export class App extends React.Component<AppProps> {
+
+  private dispose: IReactionDisposer;
+
+  public componentDidMount() {
+    const router = this.props.router;
+    if (router) {
+      this.dispose = autorun(() => router.location);
+    }
+  }
+
+  public componentWillUnmount() {
+    if(this.dispose) {
+      this.dispose();
+    }
+  }
+
   public render() {
     const { routes } = this.props;
     const isChatHidden = this.props.chat.hidden;
 
-    const appClassNames = ["app-layout-container", (isChatHidden) ? "app-chat-hide" : "app-chat-show"];
-    const chatClassNames = ["rw-chat-panel", (isChatHidden) ? "rw-chat-panel-hide" : "rw-chat-panel-show"];
+    const appClassNames = classNames(["app-layout-container", (isChatHidden) ? "app-chat-hide" : "app-chat-show"]);
+    const chatClassNames = classNames(["rw-chat-panel", (isChatHidden) ? "rw-chat-panel-hide" : "rw-chat-panel-show"]);
 
     return (
       <main>
         <Header routes={routes} chat={this.props.chat} />
         
-        <div className={classNames(appClassNames)}>
-          <div className="app-layout-content">
-            <Switch>
-              {renderRoutes(routes)}
-            </Switch>
-          </div>
+        <div className="app-layout-content">
+          <Switch>
+            {renderRoutes(routes)}
+          </Switch>
         </div>
-
-        <aside className={classNames(chatClassNames)}>
-        </aside>
       </main>
     );
   }

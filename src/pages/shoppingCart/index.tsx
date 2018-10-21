@@ -1,48 +1,16 @@
 import * as React from 'react';
 import { BusinessCard } from 'src/component/business-card';
 import { observable } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { Row, Col } from 'react-flexbox-grid';
 
 import { Item } from 'src/models';
 import { ItemOrderComponent } from 'src/component/item';
+import { ShoppingCartStore } from 'src/stores/app';
 
-const DUMMY_SC = 
-  { 
-    business: [
-      {
-        "business": "Avalon inc.", 
-        "orders": [
-          {
-            "name": "Lid - 3oz Med Rec",
-            "price": 291.73,
-            "unit": "bottle",
-            "count": 1
-          }
-        ]
-      },
-      {
-        "business": "7 Eleven.", 
-        "orders": [
-          {
-            "name": "Garlic - Primerba, Paste",
-            "price": 14.95,
-            "unit": "hour",
-            "count": 1
-          },
-          {
-            "name": "Cake Sheet Combo Party Pack",
-            "price": 359.31,
-            "unit": "bushel",
-            "count": 2
-          }
-        ]
-      }
-    ]
-  };
-
+@inject('cart')
 @observer
-export class ShoppingCartPage extends React.Component {
+export class ShoppingCartPage extends React.Component<{ cart: ShoppingCartStore }> {
   @observable private results: Item[] = [];
 
   public async componentDidMount() {
@@ -52,7 +20,9 @@ export class ShoppingCartPage extends React.Component {
   }
 
   public render() {
-    const cards = this.results.map((x, i) => <ItemOrderComponent key={i} model={x} />);
+    const cards = this.results.map((x, i) =>
+      <ItemOrderComponent key={i} model={x} cart={this.props.cart} />);
+
     return (
       <>
         <h1>Shopping Cart</h1>
