@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Icon, Card, Elevation } from '@blueprintjs/core';
+import { Icon, Card, Elevation, H3} from '@blueprintjs/core';
+import { Link } from 'react-router-dom';
+import { Grid,  Row, Col } from 'react-flexbox-grid';
 
 import { Business } from 'src/models';
 import "./style.css";
@@ -16,7 +18,7 @@ export class BusinessCard extends React.Component<BusinessCardProps> {
   }
 
   public render() {
-    const { name, distance, pricing, rating } = this.props.model;
+    const { name, distance, pricing, rating, blurb, imgurl } = this.props.model;
 
     const pricingDisplay = "$".repeat(pricing);
     const fullStar = <Icon icon="star" iconSize={20} />;
@@ -32,11 +34,21 @@ export class BusinessCard extends React.Component<BusinessCardProps> {
     }
 
     return (
-      <Card interactive={true} elevation={Elevation.TWO}>
-        <h5><a className="businessCardName" href="#">{name}</a></h5>
-        <span className="businessCardStars">{stars}</span>
-        <span className="businessCardPricing">{pricingDisplay}</span>
-        <span className="businessCardDistance">{distance} mi</span>
+      <Card className="business-card" elevation={Elevation.ONE}>
+        <Grid><Row middle="xs" between="xs">
+          <Col md={5}>
+            <Link to="/business">
+              <H3><a href="#">{name}</a></H3>
+            </Link>
+            <span>{pricingDisplay}</span>&nbsp;—&nbsp;
+            <span>{distance}mi</span>&nbsp;—&nbsp;
+            <span>{stars}</span><br/><br/>
+            <p>{blurb}</p>
+          </Col>
+          <Col>
+            <img width={325} src={imgurl} />
+          </Col>
+        </Row></Grid>
       </Card>
     );
   }

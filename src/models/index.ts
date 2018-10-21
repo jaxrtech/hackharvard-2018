@@ -7,6 +7,8 @@ export interface Business {
   rating: number;
   distance: number;
   pricing: number;
+  imgurl?: string;
+  blurb?: string;
 }
 
 export interface Item {
