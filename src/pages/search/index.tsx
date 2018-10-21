@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react';
 
 import { BusinessPreview } from 'src/component/business-preview/business-preview';
 
-import { Business } from 'src/models';
+import { Business, BusinessSearchResult } from 'src/models';
 import { RouterStore } from 'mobx-react-router';
 import { Spinner } from '@blueprintjs/core';
 import { SearchBar } from 'src/component/search-bar';
@@ -19,7 +19,7 @@ export class SearchPage extends React.Component<{ router: RouterStore, search: S
   @observable private loading = false;
   @observable private error = null as Error | null;
 
-  @observable private results: Business[] = [];
+  @observable private results: BusinessSearchResult[] = [];
 
   public async componentDidMount() {
     try {
@@ -34,7 +34,11 @@ export class SearchPage extends React.Component<{ router: RouterStore, search: S
   }
 
   private async prepare() {
-    const json = await fetch('/mock/business.json').then(x => x.json());
+    const keywords = this.props.search.query;
+    const keywordsEncoded = encodeURI(keywords);
+    const queryUrl = `http://runway-api.azurewebsites.net/api/search/query?q=${keywordsEncoded}`;
+    const json = await fetch(queryUrl).then(x => x.json());
+
     console.log('search', json);
     this.results = json;
   }
