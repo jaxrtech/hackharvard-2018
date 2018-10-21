@@ -66,7 +66,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
   }
 
   public render() {
-    const { name, price, unit } = this.props.model;
+    const { name, price, measurement } = this.props.model;
 
     const buster = Math.floor(1000 * Math.random());
     const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
@@ -85,7 +85,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
 
             <Col xs={6}>
               <Row end="xs">
-                <span className="itemOrderPrice">${price}/{unit}</span>
+                <span className="itemOrderPrice">${price}/{measurement}</span>
               </Row>
               <Row end="xs" className="itemOrderBuy">
                 <NumericInput min={0} max={100} value={0} onValueChange={x => this.quantity = x} />
