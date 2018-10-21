@@ -41,7 +41,7 @@ export class BusinessPage extends React.Component<{ cart: ShoppingCartStore }> {
     return (
       <>
         <BusinessCard model={DUMMY} />
-        <h2>Products</h2>
+        <h2 style={{color:"white"}}>Products</h2>
         <Row>{cards}</Row>
       </>
     );

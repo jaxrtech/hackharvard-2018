@@ -24,7 +24,7 @@ export class ExperiencePage extends React.Component {
         
         return (
             <>
-                <h1>Experiences</h1>
+                <h1 style={{color:"white"}}>Experiences</h1>
                 <Grid>{cards}</Grid>
             </>
         );
@@ -40,7 +40,7 @@ export class ExperienceComponent extends React.Component<ExperienceProps> {
         
         return (
             <>
-            <h2>{eventType}</h2>
+            <h2 style={{color:"white"}}>{eventType}</h2>
             <Row>
                 <p hidden={true}>{counter = counter + 1}</p>
                 <Col xs={6}>

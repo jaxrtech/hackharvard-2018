@@ -178,7 +178,7 @@ export class OrderPage extends React.Component<{ router: RouterStore }> {
 
     return (
       <>
-        <h1>Orders</h1>
+        <h1 style={{color:"white"}}>Orders</h1>
         <Grid fluid={true}>
           <Row>
             <Col className="rw-orders-panel" xs={3}>
