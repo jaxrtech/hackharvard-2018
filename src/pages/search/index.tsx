@@ -35,7 +35,7 @@ export class SearchPage extends React.Component<{ router: RouterStore, search: S
 
   private async prepare() {
     const json = await fetch('/mock/business.json').then(x => x.json());
-    console.log('serach', json);
+    console.log('search', json);
     this.results = json;
   }
   
