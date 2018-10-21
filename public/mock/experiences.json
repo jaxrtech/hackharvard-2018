@@ -1,0 +1,36 @@
+[
+    {
+        "eventType":"Arts and Crafts",
+        "eventDetails":[
+            {
+                "name": "Bob Ross Painting Night",
+                "by": "Blick",
+                "Date": "Monday Oct 28, 2018",
+                "Contact": "(617) 441 6360",
+                "Address": "619 Massachusetts Ave",
+                "Spots Left": "13/50"
+            },
+            {
+                "name": "Couples Pottery Class",
+                "by": "JJ Pottery Store",
+                "Date": "Tuesday Nov 3, 2018",
+                "Contact": "(627) 373 2833",
+                "Address": "17 Jefferson St",
+                "Spots Left": "22/40"
+            }
+        ]
+    },
+    {
+        "eventType":"Sports",
+        "eventDetails":[
+            {
+                "name": "",
+                "by": "",
+                "Date": "",
+                "Contact": "",
+                "Address": "",
+                "Spots Left": ""
+            }
+        ]        
+    }
+]
