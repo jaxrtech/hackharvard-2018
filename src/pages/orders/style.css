@@ -13,3 +13,7 @@
 .rw-orders-business-active .bp3-card {
   background-color: aliceblue;
 }
+
+.ordersImg{
+  border-radius: 10%;
+}
