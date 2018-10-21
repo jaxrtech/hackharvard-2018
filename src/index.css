@@ -7,3 +7,7 @@ body {
   padding: 0;
   font-family: 'Raleway', sans-serif;
 }
+
+.app-layout-container {
+  background-color: #003B55;
+}
