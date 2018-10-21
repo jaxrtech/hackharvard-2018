@@ -1,12 +1,21 @@
 .expImg{
     float: left;
-    width: 120px;
+    width: 125px;
     height: 150px;
 }
 
-.expBy{
-    
+.expButton{
+    margin-top:100px;
+    padding-right: 15px;
 }
+
+.expInfo{
+    padding-left: 20px;
+}
+.bp3-button{
+    float: right;
+}
+
 .expName{
     margin-bottom: 5px;
 }
