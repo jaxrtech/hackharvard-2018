@@ -28,7 +28,7 @@ export class ShoppingCartPage extends React.Component<{ cart: ShoppingCartStore 
 
     return (
       <>
-        <h1>Shopping Cart</h1>
+        <h1 style={{color:"white"}}>Shopping Cart</h1>
         
         <Row>{cards}</Row>
       </>
