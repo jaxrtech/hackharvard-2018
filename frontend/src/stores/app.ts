@@ -1,5 +1,5 @@
 import { observable } from 'mobx';
-import { ItemOrder } from 'src/models';
+import { ItemOrder, BusinessSearchResult } from 'src/models';
 
 export class ConfigStore {
   @observable public INITIAL_COUNTER = 0;
@@ -15,6 +15,35 @@ export class ConfigStore {
 
 export class SearchBarStore {
   @observable public query = "";
+
+  @observable public ready = false;
+  @observable public loading = false;
+  @observable public error = null as Error | null;
+
+  @observable public results: BusinessSearchResult[] = [];
+
+  public async load() {
+    try {
+      this.loading = true;
+      await this._reload();
+      this.ready = true;
+    } catch (err) {
+      this.error = err;
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  private async _reload() {
+    const keywords = this.query;
+    const keywordsEncoded = encodeURI(keywords);
+    const queryUrl = `https://runway-api.azurewebsites.net/api/search/query?q=${keywordsEncoded}`;
+    const json = await fetch(queryUrl).then(x => x.json());
+
+    console.log('search', json);
+    this.results = json;
+  }
+
 }
 
 export class ChatStore {

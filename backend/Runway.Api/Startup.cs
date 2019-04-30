@@ -31,11 +31,8 @@ namespace Runway.Api
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins(
-                        "https://runwaylocal.com",
-                        "https://runwayspa.z13.web.core.windows.net/",
-                        "http://localhost:3000"));
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin());
             });
 
             services.AddTransient(x => new DocumentClient(
@@ -60,7 +57,7 @@ namespace Runway.Api
                 app.UseHsts();
             }
 
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors("AllowAllOrigins");
             app.UseHttpsRedirection();
             app.UseMvc();
         }

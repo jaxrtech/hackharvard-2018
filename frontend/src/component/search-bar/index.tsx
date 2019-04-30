@@ -21,7 +21,7 @@ export class SearchBar extends React.Component<SearchBarProps> {
         <span className="bp3-icon bp3-icon-search"></span>
         <input
           className="bp3-input"
-          value={this.props.search.query}
+          defaultValue={this.props.search.query}
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
           type="search"
