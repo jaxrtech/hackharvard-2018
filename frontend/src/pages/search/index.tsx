@@ -17,8 +17,8 @@ export class SearchPage extends React.Component<{ router: RouterStore, search: S
 
   private disposer: IReactionDisposer | null = null;
 
-  private handleSelect = (model: Business) => {
-    this.props.router.push('/business/1'); // TODO(Bowden): handle ids
+  private handleSelect = (id: string) => {
+    this.props.router.push('/business/' + id); // TODO(Bowden): handle ids
   }
 
   public componentWillMount() {
@@ -31,7 +31,7 @@ export class SearchPage extends React.Component<{ router: RouterStore, search: S
     }
 
     const cards = this.props.search.results.map((x, i) =>
-      <BusinessPreview key={i} model={x} />);
+      <BusinessPreview key={i} model={x} onClick={() => this.handleSelect(x.id)} />);
 
     return (
       <>

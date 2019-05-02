@@ -14,6 +14,9 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { RouterStore } from 'mobx-react-router';
 import { CheckoutService } from 'src/services/checkout';
+import { DateTimePicker, DatePicker } from '@blueprintjs/datetime';
+
+import 'react-day-picker/lib/style.css';
 
 @inject('cart')
 @inject('router')
@@ -31,6 +34,7 @@ export class CheckoutPage extends React.Component<{ cart: ShoppingCartStore; rou
     zipcode: '',
     cardHolder: '',
     cardNumber: '',
+    deliveryDate: new Date(),
   };
 
   public render() {
@@ -62,18 +66,20 @@ export class CheckoutPage extends React.Component<{ cart: ShoppingCartStore; rou
                   setSubmitting(false);
                   this.props.router.replace('/orders');
                 })
-                  .catch(err => {
-                    console.error(err);
-                    this.props.toaster.show({ intent: Intent.DANGER, message: err.toString() });
-                    setSubmitting(false);
-                  });
+                .catch(err => {
+                  console.error(err);
+                  this.props.toaster.show({ intent: Intent.DANGER, message: err.toString() });
+                  setSubmitting(false);
+                });
               }}
             >
               {props => {
                 const {
+                  values,
                   isSubmitting,
                   handleSubmit,
                   handleReset,
+                  handleChange
                 } = props;
 
                 return (
@@ -128,6 +134,8 @@ export class CheckoutPage extends React.Component<{ cart: ShoppingCartStore; rou
                 >
                   Reset
                 </button> */}
+
+                    <DateTimePicker />
 
                     <Button
                       disabled={isSubmitting}

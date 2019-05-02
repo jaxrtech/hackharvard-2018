@@ -85,16 +85,16 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
   }
 
   public render() {
-    const { name, price, unitOfMeasurement } = this.props.model;
+    const { product, price, unitOfMeasurement } = this.props.model;
 
     const buster = Math.floor(1000 * Math.random());
 
     return (
       <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
-        <H5 className="itemOrderName">{name}</H5>
+        <H5 className="itemOrderName">{product.name}</H5>
         <Row between="xs" middle="xs">
           <Col>
-            <img className="itemOrderPicture" src={mockImageUrl(64, 64, name)} />
+            <img className="itemOrderPicture" src={mockImageUrl(64, 64, product.name)} />
           </Col>
 
           <Col>

@@ -97,4 +97,8 @@ export class ShoppingCartStore {
     order.quantity = 0;
     this.addOrUpdate(order);
   }
+
+  public clear() {
+    this.orders.splice(0, this.orders.length);
+  }
 }

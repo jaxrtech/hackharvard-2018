@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Icon, Card, Elevation, H3, Divider} from '@blueprintjs/core';
+import { Icon, Card, Elevation, H3, Divider } from '@blueprintjs/core';
 import { Link } from 'react-router-dom';
-import { Grid,  Row, Col } from 'react-flexbox-grid';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 import { Business, BusinessSearchResult } from 'src/models';
 import "./style.css";
+import { mockImageUrl } from 'src/util/mock';
 
-export type BusinessPreviewProps = { model: BusinessSearchResult; };
+export type BusinessPreviewProps = { model: BusinessSearchResult; onClick: () => void };
 
 // https://www.geodatasource.com/developers/javascript
 function distance(lat1: number, lon1: number, lat2: number, lon2: number, unit: string) {
@@ -50,27 +51,27 @@ export class BusinessPreview extends React.Component<BusinessPreviewProps> {
     }
 
     const buster = Math.floor(1000 * Math.random()); // copypasta
-    const photoUrl = 'https://picsum.photos/96/96/?random&_=' + buster;
+    const photoUrl = (x: number) => mockImageUrl(96, 96, (Math.random() * 1000 + x).toString());
 
     return (
-      <Card interactive={true} elevation={Elevation.TWO} style={{margin: '10px'}}>
+      <Card interactive={true} elevation={Elevation.TWO} style={{ margin: '10px' }} onClick={this.props.onClick}>
         <Grid><Row middle="xs" between="xs">
-            <Col>
-                <Link to="/business">
-                    <H3><a href="#">{name}</a></H3>
-                </Link>
-                <span>{pricingDisplay}</span>&nbsp;—&nbsp;
-                <span>{miles} mi</span>&nbsp;—&nbsp;
-                <span>{stars}</span><br/>
-                <span></span>
-            </Col>
-            <Row around="md" end="xs">
-              <Col md={2}><img width="96" height="96" src={photoUrl} /></Col>
-              <Col md={2}><img width="96" height="96" src={photoUrl+1} /></Col>
-              <Col md={2}><img width="96" height="96" src={photoUrl+2} /></Col>
-              <Col md={2} style={{marginRight: '10px'}}><img src={photoUrl+3} /></Col>
-            </Row>
+          <Col>
+            <Link to="/business">
+              <H3><a href="#">{name}</a></H3>
+            </Link>
+            <span>{pricingDisplay}</span>&nbsp;—&nbsp;
+                <span>{(Math.random() * 10).toFixed(2)} mi</span>&nbsp;—&nbsp;
+                <span>{stars}</span><br />
+            <span></span>
+          </Col>
+          <Row around="md" end="xs">
+            <Col md={2}><img width="96" height="96" src={photoUrl(0)} /></Col>
+            <Col md={2}><img width="96" height="96" src={photoUrl(1)} /></Col>
+            <Col md={2}><img width="96" height="96" src={photoUrl(2)} /></Col>
+            <Col md={2} style={{ marginRight: '10px' }}><img src={photoUrl(3)} /></Col>
           </Row>
+        </Row>
         </Grid>
       </Card>
     );

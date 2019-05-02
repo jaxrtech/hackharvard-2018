@@ -5,11 +5,17 @@ import { inject, observer } from 'mobx-react';
 
 import './success.css';
 import { Link } from 'react-router-dom';
+import { ShoppingCartStore } from 'src/stores/app';
 
+@inject('cart')
 @inject('router')
 @inject('toaster')
 @observer
-export class CheckoutSuccessPage extends React.Component<{ router: RouterStore; }> {
+export class CheckoutSuccessPage extends React.Component<{ router: RouterStore; cart: ShoppingCartStore }> {
+
+  public componentDidMount() {
+    this.props.cart.clear();
+  }
 
   public render() {
     return (

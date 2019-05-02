@@ -15,9 +15,11 @@ export interface Business {
 export interface Item {
   id: string;
   photoUrl: string;
-  name: string;
   price: number; // TODO(Bowden): use decimal numbers not float!
   unitOfMeasurement: string;
+  product: {
+    name: string;
+  };
 }
 
 export interface ItemOrder {
@@ -62,6 +64,7 @@ export interface BusinessSearchResult {
   latitude: number;
   longitude: number;
   stars: number;
+  rating: number;
   review_count: number;
   is_open: number;
   attributes: { [key: string]: string };

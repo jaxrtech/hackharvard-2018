@@ -6,7 +6,7 @@ import { Row, Col } from 'react-flexbox-grid';
 
 import { Item } from 'src/models';
 import { ItemOrderComponent } from 'src/component/item';
-import { ShoppingCartStore } from 'src/stores/app';
+import { ShoppingCartStore, ConfigStore } from 'src/stores/app';
 
 const DUMMY = {
   "id": "627f4613-83f1-4cab-8387-d56311edb30f",
@@ -20,18 +20,21 @@ const DUMMY = {
 };
 
 @inject('cart')
+@inject('config')
 @observer
-export class BusinessPage extends React.Component<{ cart: ShoppingCartStore }> {
+export class BusinessPage extends React.Component<{ config: ConfigStore, cart: ShoppingCartStore }> {
 
   @observable private results: Item[] = [];
 
   public async componentDidMount() {
-    const json = await fetch('/mock/items.json').then(x => x.json());
-    console.log('business');
+    const json = await fetch(this.props.config.API_ROOT_URL + '/inventory?select=id:product_id,product(name),quantity,price,unitOfMeasurement:unit_of_measure&limit=25&store_id=eq.1').then(x => x.json());
+    console.log('business: ', json);
     this.results = json;
   }
   
   public render() {
+    if (!Array.isArray(this.results)) { return <></>; }
+
     const cards = this.results.map((x, i) =>
       <Col key={i} md={6}>
         <ItemOrderComponent model={x} cart={this.props.cart} />
