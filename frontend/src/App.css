@@ -12,15 +12,17 @@ main {
 }
 
 .app-layout-container {
-  flex: auto;
+  display: flex;
   padding: 0px 50px;
+  height: 100%;
+  flex-direction: column;
 }
 
 .app-chat-hide {
 }
 
 .app-chat-show {
-  margin-right: 320px; /* chat sidebar */
+  /* margin-right: 320px; */ /* chat sidebar */
 }
 
 .app-layout-content {

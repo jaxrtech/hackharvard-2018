@@ -12,12 +12,13 @@ export const router = new RouterStore();
 
 export const config = new ConfigStore({
   initialCounter: 42,
+  API_ROOT_URL: 'http://198.37.24.59:3000',
 });
 
 export const chat = new ChatStore();
 export const cart = new ShoppingCartStore();
 export const search = new SearchBarStore();
-export const login = new LoginService(toaster, router);
+export const login = new LoginService(config, toaster, router);
 
 export const browserHistory = createBrowserHistory();
 export const history = syncHistoryWithStore(browserHistory, router);

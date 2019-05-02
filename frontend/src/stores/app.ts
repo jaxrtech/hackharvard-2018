@@ -1,11 +1,14 @@
 import { observable } from 'mobx';
 import { ItemOrder, BusinessSearchResult } from 'src/models';
+import { IToaster, Intent } from '@blueprintjs/core';
 
 export class ConfigStore {
   @observable public INITIAL_COUNTER = 0;
+  @observable public API_ROOT_URL;
  
-  constructor(config: { initialCounter: number }) {
+  constructor(config: { initialCounter: number, API_ROOT_URL: string }) {
     this.INITIAL_COUNTER = config.initialCounter;
+    this.API_ROOT_URL = config.API_ROOT_URL;
   }
 
   public async load(): Promise<void> {
@@ -59,9 +62,9 @@ export class ChatStore {
 export class ShoppingCartStore {
   @observable public orders: ItemOrder[] = [];
 
-  public get(order: ItemOrder) {
+  public get(id: string) {
     const found = this.orders.find(x =>
-      x.item.id === order.item.id);
+      x.item.id === id);
     return found;
   }
 

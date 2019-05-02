@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 import { IToaster } from '@blueprintjs/core';
 import { MutexedPromise } from 'src/util/mutexed-promise';
 import { RouterStore } from 'mobx-react-router';
+import { ConfigStore } from 'src/stores/app';
 
 export interface UserProfile {
   name: string;
@@ -37,9 +38,10 @@ export class LoginService extends EventEmitter {
   private toaster: IToaster;
   private router: RouterStore;
 
-  constructor(toaster: IToaster, router: RouterStore) {
+  constructor(config: ConfigStore, toaster: IToaster, router: RouterStore) {
     super();
 
+    this.API_ROOT_URL = config.API_ROOT_URL;
     this._loginMutex = new MutexedPromise(this._login);
 
     this.toaster = toaster;
@@ -101,7 +103,8 @@ export class LoginService extends EventEmitter {
 
     // TODO: ...but that will change when we will need to force a logout
 
-    return this._loginMutex.load(force);
+    // return this._loginMutex.load(force);
+    this.router.push('/login');
   }
 
   private readonly _loginMutex: MutexedPromise<any>;
@@ -115,6 +118,33 @@ export class LoginService extends EventEmitter {
     finally {
       this._status = 'enabled';
     }
+  }
+
+  public async submit({ email, password }: { email: string; password: string }) {
+    // tslint:disable-next-line:one-variable-per-declaration
+    const res = await fetch(
+      this.API_ROOT_URL + `/rpc/login`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ p_email: email, p_password: password })
+      });
+
+    const json = await res.json();
+    if (res.status >= 400 && res.status <= 599) {
+      throw new Error((json as any).message || 'Unable to login right now...try again in a bit.');
+    }
+
+    await this.handleLogin(json);
+  }
+
+  public logout() {
+    console.log('LOGOUT');
+    this.jwt = '';
+    this._context = null;
+    this.emit('logout');
   }
 
   private handleLoginContextInternal(data: any, resolve: (data: any) => void, reject: (err: Error) => void) {

@@ -40,6 +40,11 @@ export class Header extends React.Component<HeaderProps> {
         ? <><img width={32} height={32} src={mockImageUrl(32, 32, name)} className="avatar" /> {name}</>
         : <LoginButton login={this.props.login} onSuccess={() => null} />;
 
+    const logoutButton = 
+      (this.props.login.isLoggedIn)
+        ? <Button className={Classes.MINIMAL} icon="log-out" onClick={() => this.props.login.logout()} />
+        : <></>;
+
     return (
       <>
         <Navbar className="bp3-dark">
@@ -61,10 +66,7 @@ export class Header extends React.Component<HeaderProps> {
 
           <NavbarGroup align={Alignment.RIGHT}>
             {loginDisplay}
-            <Button className={Classes.MINIMAL} icon="user" />
-            <Button className={Classes.MINIMAL} icon="notifications" />
-            <Button className={Classes.MINIMAL} icon="cog" />
-            <Button className={Classes.MINIMAL} icon="chat" onClick={() => this.props.chat.toggle()} />
+            {logoutButton}
           </NavbarGroup>
         </Navbar>
       </>

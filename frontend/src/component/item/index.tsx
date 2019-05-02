@@ -8,6 +8,7 @@ import "./style.css";
 import { observable, when, IReactionDisposer, computed } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { ShoppingCartStore } from 'src/stores/app';
+import { mockImageUrl } from 'src/util/mock';
 
 type ItemOrderProps = { model: Item, cart: ShoppingCartStore };
 
@@ -43,10 +44,16 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
   private dispose: IReactionDisposer;
 
   public componentWillMount() {
-    this.dispose = when(
-      () => this.inCart && this.quantity >= 1,
-      () => this.handleAction(),
-    );
+    const modelQ = this.props.cart.get(this.props.model.id);
+    if (modelQ) {
+      this.inCart = true;
+      this.quantity = modelQ.quantity;
+    }
+
+    // this.dispose = when(
+    //   () => this.inCart && this.quantity >= 1,
+    //   () => this.handleAddToCart(),
+    // );
   }
 
   public componentWillUnmount() {
@@ -55,7 +62,7 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
     }
   }
 
-  private handleAction = () => {
+  private handleAddToCart = () => {
     const oldQuantity = this.quantity;
 
     if (!this.inCart) {
@@ -69,21 +76,25 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
       this.quantity = 0;
     }
 
+    // this.toaster.show({ intent: Intent.PRIMARY, message: "Cart updated!", timeout: 500 });
     console.log('cart', this.props.cart.orders);
+  }
+
+  private handleQuantity = (x: number) => {
+    this.quantity = x;
   }
 
   public render() {
     const { name, price, unitOfMeasurement } = this.props.model;
 
     const buster = Math.floor(1000 * Math.random());
-    const photoUrl = 'https://picsum.photos/64/64/?random&_=' + buster;
 
     return (
       <Card className="rw-item-order-card" interactive={true} elevation={Elevation.ONE}>
         <H5 className="itemOrderName">{name}</H5>
         <Row between="xs" middle="xs">
           <Col>
-            <img className="itemOrderPicture" src={photoUrl} />
+            <img className="itemOrderPicture" src={mockImageUrl(64, 64, name)} />
           </Col>
 
           <Col>
@@ -91,8 +102,8 @@ export class ItemOrderComponent extends React.Component<ItemOrderProps> {
               <span className="itemOrderPrice">${price}/{unitOfMeasurement}</span>
             </Row>
             <Row end="xs" className="itemOrderBuy">
-              <NumericInput style={{width:"30px"}} min={0} max={100} value={0} onValueChange={x => this.quantity = x} />
-              <Button icon="shopping-cart" onClick={this.handleAction} intent={this.action.intent}>{this.action.text}</Button>
+              <NumericInput style={{ width: "30px" }} min={0} max={100} value={this.quantity} onValueChange={this.handleQuantity} />
+              <Button icon="shopping-cart" onClick={this.handleAddToCart} intent={this.action.intent}>{this.action.text}</Button>
             </Row>
           </Col>
         </Row>

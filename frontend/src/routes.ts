@@ -6,6 +6,7 @@ import { SearchPage } from './pages/search';
 import { BusinessPage } from './pages/business';
 import { ShoppingCartPage } from './pages/shoppingCart';
 import { ExperiencePage} from './pages/experience';
+import { LoginPage } from './pages/login/login';
 
 export const routes: RouteSpec[] = [
   {
@@ -13,6 +14,12 @@ export const routes: RouteSpec[] = [
     text: "Home",
     exact: true,
     main: HomePage,
+    hidden: true,
+  },
+  {
+    path: "/login",
+    text: "Login",
+    main: LoginPage,
     hidden: true,
   },
   {
