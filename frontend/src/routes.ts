@@ -1,3 +1,4 @@
+import { CheckoutPage } from './pages/checkout/checkout';
 import { OrderPage } from './pages/orders/index';
 import { RouteSpec } from './util/routing';
 
@@ -7,6 +8,8 @@ import { BusinessPage } from './pages/business';
 import { ShoppingCartPage } from './pages/shoppingCart';
 import { ExperiencePage} from './pages/experience';
 import { LoginPage } from './pages/login/login';
+import { RegisterPage } from './pages/register/register';
+import { CheckoutSuccessPage } from './pages/checkout/success';
 
 export const routes: RouteSpec[] = [
   {
@@ -21,6 +24,26 @@ export const routes: RouteSpec[] = [
     text: "Login",
     main: LoginPage,
     hidden: true,
+  },
+  {
+    path: "/register",
+    text: "Register",
+    main: RegisterPage,
+    hidden: true,
+  },
+  {
+    path: "/checkout",
+    text: "Checkout",
+    main: CheckoutPage,
+    hidden: true,
+    exact: true
+  },
+  {
+    path: "/checkout/success",
+    text: "Checkout Success",
+    main: CheckoutSuccessPage,
+    hidden: true,
+    exact: true
   },
   {
     path: "/search",

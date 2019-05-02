@@ -16,7 +16,7 @@ import * as stores from './stores';
 ReactDOM.render(
   <MobxProvider {...stores}>
       <Router history={stores.history}>
-        <App routes={routes} chat={stores.chat} login={stores.login} />
+        <App router={stores.router} routes={routes} chat={stores.chat} login={stores.login} />
       </Router>
   </MobxProvider>,
   document.getElementById('root') as HTMLElement

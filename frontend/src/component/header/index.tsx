@@ -10,6 +10,7 @@ import { ChatStore } from 'src/stores/app';
 import { LoginService } from 'src/services/login';
 import { mockImageUrl } from 'src/util/mock';
 import { LoginButton } from '../login-button/login-button';
+import { RouterStore } from 'mobx-react-router';
 
 type NavbarLinkProps = RouteActive & RoutePath & RouteText & RouteIcon;
 const NavbarLink = ({ active, path, text, icon }: NavbarLinkProps) => {
@@ -23,10 +24,12 @@ const NavbarLink = ({ active, path, text, icon }: NavbarLinkProps) => {
 type HeaderProps = {
   routes: RouteSpec[];
   chat: ChatStore,
-  login: LoginService
+  login: LoginService,
+  router: RouterStore
 };
 
 @inject('chat')
+@inject('router')
 @observer
 export class Header extends React.Component<HeaderProps> {
   public render() {
@@ -42,7 +45,10 @@ export class Header extends React.Component<HeaderProps> {
 
     const logoutButton = 
       (this.props.login.isLoggedIn)
-        ? <Button className={Classes.MINIMAL} icon="log-out" onClick={() => this.props.login.logout()} />
+        ? <>
+            <Button className={Classes.MINIMAL} icon="log-out" onClick={() => this.props.login.logout()} />
+            <Button className={Classes.MINIMAL} icon="shopping-cart" onClick={() => this.props.router.push('/shoppingCart')} />
+          </>
         : <></>;
 
     return (

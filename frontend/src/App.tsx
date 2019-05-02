@@ -16,7 +16,7 @@ import { LoginService } from './services/login';
 export type AppProps = {
   routes: RouteSpec[];
   chat: ChatStore;
-  router?: RouterStore;
+  router: RouterStore;
   login: LoginService;
 };
 
@@ -39,7 +39,7 @@ export class App extends React.Component<AppProps> {
   }
 
   public render() {
-    const { routes } = this.props;
+    const { routes, router } = this.props;
     const isChatHidden = this.props.chat.hidden;
 
     const appClassNames = classNames(["app-layout-container", (isChatHidden) ? "app-chat-hide" : "app-chat-show"]);
@@ -47,7 +47,7 @@ export class App extends React.Component<AppProps> {
 
     return (
       <main>
-        <Header login={this.props.login} routes={routes} chat={this.props.chat} />
+        <Header login={this.props.login} routes={routes} router={router} chat={this.props.chat} />
         
         <div className={classNames(appClassNames)}>
           <Switch>

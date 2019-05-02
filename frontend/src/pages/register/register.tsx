@@ -8,30 +8,32 @@ import { Item } from 'src/models';
 import { ItemOrderComponent } from 'src/component/item';
 import { ShoppingCartStore } from 'src/stores/app';
 import { LoginService } from 'src/services/login';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import { FormGroup, InputGroup, Intent, Button, Toast, Toaster, IToaster } from '@blueprintjs/core';
 
-import './login.css';
+import './register.css';
 import { RouterStore } from 'mobx-react-router';
 import { BPFInput } from 'src/component/bpf-input/bpf-input';
 import { Link } from 'react-router-dom';
+import { RegisterService } from 'src/services/register';
 
 @inject('login')
 @inject('router')
 @inject('toaster')
+@inject('register')
 @observer
-export class LoginPage extends React.Component<{ toaster: IToaster; login: LoginService; router: RouterStore }> {
+export class RegisterPage extends React.Component<{ toaster: IToaster; login: LoginService; router: RouterStore; register: RegisterService }> {
   @observable private results: Item[] = [];
 
   public render() {
     return (
       <div className="page-login-container">
       <main className="page-login">
-        <h1>Login</h1>
+        <h1>Register</h1>
 
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ email: '', name: '', dob: '01/26/2019', password: '', zipcode: '' }}
           validationSchema={Yup.object().shape({
             email: Yup.string()
               .email()
@@ -39,7 +41,7 @@ export class LoginPage extends React.Component<{ toaster: IToaster; login: Login
             password: Yup.string().required('Required')
           })}
           onSubmit={(values, { setSubmitting }) => {
-            this.props.login.submit(values).then(() => {
+            this.props.register.submit(values).then(() => {
               setSubmitting(false);
               this.props.router.replace('/');
             })
@@ -52,18 +54,19 @@ export class LoginPage extends React.Component<{ toaster: IToaster; login: Login
         >
           {props => {
             const {
-              values,
-              touched,
-              errors,
-              dirty,
               isSubmitting,
-              handleChange,
-              handleBlur,
               handleSubmit,
               handleReset,
             } = props;
+
             return (
               <form onSubmit={handleSubmit}>
+                <BPFInput
+                  id="name"
+                  label="Name"
+                  placeholder="Enter your name"
+                  formik={props} />
+                  
                 <BPFInput
                   id="email"
                   label="Email"
@@ -77,6 +80,12 @@ export class LoginPage extends React.Component<{ toaster: IToaster; login: Login
                   type="password"
                   formik={props} />
 
+                <BPFInput
+                  id="zipcode"
+                  label="Zipcode"
+                  placeholder="Enter your zipcode"
+                  formik={props} />
+
                 {/* <button
                   type="button"
                   className="outline"
@@ -86,7 +95,7 @@ export class LoginPage extends React.Component<{ toaster: IToaster; login: Login
                   Reset
                 </button> */}
                 
-                <Link to="/register" style={{float: 'left'}}>Or Register</Link>
+                <Link to="/login" style={{ float: 'left' }}>Or Login</Link>
 
                 <Button
                   disabled={isSubmitting}

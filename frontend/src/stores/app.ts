@@ -62,6 +62,10 @@ export class ChatStore {
 export class ShoppingCartStore {
   @observable public orders: ItemOrder[] = [];
 
+  public get total() {
+    return this.orders.reduce((prev, cur) => prev + (cur.quantity * cur.item.price), 0);
+  }
+
   public get(id: string) {
     const found = this.orders.find(x =>
       x.item.id === id);
