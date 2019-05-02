@@ -57,7 +57,7 @@ export class HomePage extends React.Component<HomePageProps> {
         <br/>
         <br/>
         <br/>
-        <H1 className="title">Runway</H1>
+        <H1 className="title">Grocery2Go</H1>
         <SearchBar router={this.props.router} search={this.props.search} />
         <br/>
         

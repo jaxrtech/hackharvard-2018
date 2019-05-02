@@ -51,7 +51,7 @@ export class Header extends React.Component<HeaderProps> {
           <NavbarGroup align={Alignment.LEFT}>
             <NavbarHeading>
               <img width={32} style={{verticalAlign:"middle", marginRight:"5px"}} src="/favicon-32x32.png" />
-              <Link to="/">Runway</Link></NavbarHeading>
+              <Link to="/">Grocery2Go</Link></NavbarHeading>
             <NavbarDivider />
             {routes.map((route, index) => (
               (route.hidden)
