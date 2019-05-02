@@ -7,6 +7,9 @@ import './index.css';
 import { Navbar, NavbarGroup, Alignment, NavbarHeading, NavbarDivider, Button, Classes } from '@blueprintjs/core';
 import { inject, observer } from 'mobx-react';
 import { ChatStore } from 'src/stores/app';
+import { LoginService } from 'src/services/login';
+import { mockImageUrl } from 'src/util/mock';
+import { LoginButton } from '../login-button/login-button';
 
 type NavbarLinkProps = RouteActive & RoutePath & RouteText & RouteIcon;
 const NavbarLink = ({ active, path, text, icon }: NavbarLinkProps) => {
@@ -19,14 +22,23 @@ const NavbarLink = ({ active, path, text, icon }: NavbarLinkProps) => {
 
 type HeaderProps = {
   routes: RouteSpec[];
-  chat: ChatStore
+  chat: ChatStore,
+  login: LoginService
 };
 
 @inject('chat')
 @observer
 export class Header extends React.Component<HeaderProps> {
   public render() {
-    const { routes } = this.props;
+    const { routes, login } = this.props;
+
+    const user = login.user;
+    const name = user ? user.name : '';
+
+    const loginDisplay =
+      (this.props.login.user)
+        ? <><img width={32} height={32} src={mockImageUrl(32, 32, name)} className="avatar" /> {name}</>
+        : <LoginButton login={this.props.login} onSuccess={() => null} />;
 
     return (
       <>
@@ -48,6 +60,7 @@ export class Header extends React.Component<HeaderProps> {
           </NavbarGroup>
 
           <NavbarGroup align={Alignment.RIGHT}>
+            {loginDisplay}
             <Button className={Classes.MINIMAL} icon="user" />
             <Button className={Classes.MINIMAL} icon="notifications" />
             <Button className={Classes.MINIMAL} icon="cog" />

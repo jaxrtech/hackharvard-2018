@@ -24,6 +24,7 @@ export class SearchBarStore {
 
   public async load() {
     try {
+      console.log("Search: attempting to load");
       this.loading = true;
       await this._reload();
       this.ready = true;
@@ -35,9 +36,10 @@ export class SearchBarStore {
   }
 
   private async _reload() {
+    console.log('Refetching...');
     const keywords = this.query;
     const keywordsEncoded = encodeURI(keywords);
-    const queryUrl = `https://runway-api.azurewebsites.net/api/search/query?q=${keywordsEncoded}`;
+    const queryUrl = `http://198.37.24.59:3000/store`;
     const json = await fetch(queryUrl).then(x => x.json());
 
     console.log('search', json);

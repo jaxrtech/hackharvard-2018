@@ -21,6 +21,10 @@ export class SearchPage extends React.Component<{ router: RouterStore, search: S
     this.props.router.push('/business/1'); // TODO(Bowden): handle ids
   }
 
+  public componentWillMount() {
+    this.props.search.load();
+  }
+
   public render() {
     if (!this.props.search.ready) {
       return <Spinner size={50} />;

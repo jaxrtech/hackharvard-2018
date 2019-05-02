@@ -11,11 +11,13 @@ import * as classNames from 'classnames';
 import { RouterStore } from 'mobx-react-router';
 import { when, autorun, IReactionDisposer } from 'mobx';
 import { ChatBotPanel } from './component/chatbot/chatbot';
+import { LoginService } from './services/login';
 
 export type AppProps = {
   routes: RouteSpec[];
   chat: ChatStore;
   router?: RouterStore;
+  login: LoginService;
 };
 
 @inject('router')
@@ -45,22 +47,13 @@ export class App extends React.Component<AppProps> {
 
     return (
       <main>
-        <Header routes={routes} chat={this.props.chat} />
+        <Header login={this.props.login} routes={routes} chat={this.props.chat} />
         
         <div className={classNames(appClassNames)}>
           <Switch>
             {renderRoutes(routes)}
           </Switch>
         </div>
-
-        <aside className={classNames(chatClassNames)}>
-          <iframe 
-            allow="microphone;"
-            width="100%"
-            height="95%"
-            src="https://console.dialogflow.com/api-client/demo/embedded/85346c45-c5c2-49b5-9daa-6ffa350f37b0">
-          </iframe>
-        </aside>
       </main>
     );
   }

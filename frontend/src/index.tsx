@@ -11,32 +11,12 @@ import registerServiceWorker from './registerServiceWorker';
 import './index.css'; // import before custom styles
 import { App } from './App';
 import { routes } from './routes';
-import { ConfigStore, SearchBarStore, ChatStore, ShoppingCartStore } from './stores/app';
-
-const routingStore = new RouterStore();
-
-const configStore = new ConfigStore({
-  initialCounter: 42,
-});
-
-const chatStore = new ChatStore();
-const cartStore = new ShoppingCartStore();
-
-const stores = {
-  router: routingStore,
-  config: configStore,
-  search: SearchBarStore,
-  chat: chatStore,
-  cart: cartStore
-};
-
-const browserHistory = createBrowserHistory();
-const history = syncHistoryWithStore(browserHistory, routingStore);
+import * as stores from './stores';
 
 ReactDOM.render(
   <MobxProvider {...stores}>
-      <Router history={history}>
-        <App routes={routes} chat={chatStore} />
+      <Router history={stores.history}>
+        <App routes={routes} chat={stores.chat} login={stores.login} />
       </Router>
   </MobxProvider>,
   document.getElementById('root') as HTMLElement
